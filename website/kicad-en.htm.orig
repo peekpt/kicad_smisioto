@@ -1,0 +1,3086 @@
+<HTML><HEAD><TITLE>Kicad</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<link href="/style.css" rel="stylesheet" type="text/css">
+<STYLE type=text/css>BODY {
+	BACKGROUND: #000000
+}
+.para1 {
+	COLOR: #0ff3d5; FONT-FAMILY: font2, Arial; FONT-SIZE: 30px; LINE-HEIGHT: 35px; MARGIN-LEFT: 145px; MARGIN-RIGHT: 10px; MARGIN-TOP: -32px; TEXT-ALIGN: center
+}
+.para2 {
+	COLOR: #bb0000; FONT-FAMILY: font1, Arial Black; FONT-SIZE: 50px; LINE-HEIGHT: 40px; MARGIN-LEFT: 15px; MARGIN-RIGHT: 50px; MARGIN-TOP: 15px; TEXT-ALIGN: center
+}
+</STYLE>
+
+</HEAD>
+<BODY bgColor=#000000 leftMargin=0 text=#009900 topMargin=0>
+<DIV align=center class=para2>
+<P>Kicad</P></DIV>
+<DIV align=center class=para1>
+<P>Electronic CAD libraries</P></DIV>
+<HR align=center color=#ff6666 noShade SIZE=1 width="100%">
+<BR>
+<CENTER>All the material present in this page is covered by your choice of either Creative Commons license v3.0, Attribution-Share Alike or GPLv3 or later.</CENTER>
+<CENTER><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a></CENTER>
+<BR><BR>
+<FONT color=#ff0000>Se siete finiti nella pagina inglese per sbaglio, cliccate <A href="/elettronica/kicad/kicad.htm" target="pagina"><FONT color=#0ff3d5>qui</FONT></A> per tornare alla versione italiana.</FONT><BR>
+Click <A href="/elettronica/progetti-en.htm" target="pagina"><FONT color=#0ff3d5>here</FONT></A> to go back to the projects page.<BR>
+<BR><BR>
+After the fortuitos discover of <A href="http://www.kicad-pcb.org" target="blank"><FONT color=#0ff3d5>Kicad</FONT></A> in the now far (informatically speaking) 2007, the
+ only Winzozz software that I still use are videogames.<BR>
+<BR>
+Kicad is an electronic CAD that allows you to do the following (for a more detailed explanation you should refer to the official <A href="http://www.kicad-pcb.org" target="blank"><FONT color=#0ff3d5>Kicad</FONT></A> site):<BR>
+<UL>
+<LI>Schematic design.<BR>
+<LI>Netlist creation in multiple formats (PCBNew, OrCAD, CadStar, Spice, etc...).<BR>
+<LI>PCB design.<BR>
+<LI>3D visualization of your PCB<BR>
+<LI>Fabrication outputs generation (gerber, drill files and whatever can be needed to manufacture a PCB.)<BR>
+</UL>
+Kicad can be used in GNU/Linux, Windows and Mac OS X, even if to open in Windows projects created within Linux (or the opposite, not having Mac OS I don't know if the same applies there) it is necessary to manually
+ change some things inside the project files (in perfect *nix style, they are text files). To be more precise, all the "/" related to library paths must be changed with "\".<BR>
+For ease of use, the PCBnew libraries here published are available in both versions, ready to be used in each operating system.
+ If you port a project from an OS to another, however, the most terrible thing that usually happens is that you won't see the 3D component models.
+ A fast replacement "/"<->"\"  inside the .pcb file will solve the problem.<BR>
+<BR>
+In order to create the 3D shape for the components, it is needed a 3D modeler such as <A href="http://www.wings3d.com" target="blank"><FONT color=#0ff3d5>Wings 3D</FONT></A>.
+ It is not difficult to learn neither Kicad nor Wings 3D.<BR>
+<BR>
+All my libraries are available here for public use.<BR>
+It is possible to use them also to design commercial products, within the boundaries of the Creative Commons BY-SA license.<BR><BR>
+
+I am available to create components not included in my libraries, with 2 clauses:<BR>
+<LI>I require a standard product datasheet (I will NOT accept NDAs, see the second clause);
+<LI>My work will be free, and the components will be added to my libraries covered by the CC-BY-SA license.<BR><BR>
+<FONT color=#ff0000>You can contact me at k c s w a l t e r (at) t i s c a l i (dot) i t</FONT>
+<BR><BR>
+<B><I>Please note that I must be able to answer to your emails in order to grant your requests. If I can't contact
+ you through the mail address with which you mailed me, please give me another address. If you think your mail
+ address is right but I don't reply within a week, please contact me again with another address. Sometimes there
+ are problems between providers (for example, I am not able to contact anyone within Metrocast network - I don't know why, it is just so).</I></B>
+<BR><BR>
+Since september 2012, a <A href="/kicad_libs/changelog.txt"><FONT color=#0ff3d5>changelog</FONT></A> of the libraries is also available.
+<BR><BR>
+Since the end of March 2013, the libraries are available also through SVN (<I>svn --username guest co svn://smisioto.eu/kicad_libs</I>) in a compressed version.<BR>
+Since February 2014, the libraries are available also through GIT (<I>git clone git://smisioto.eu/kicad_libs.git</I>) uncompressed and also in the new "pretty" format. Please refer to the file readme_git.txt
+ in the repository for more detailed informations.<BR>
+Since February 2015, the old format footprint libraries will be no longer updated. Please use the new "pretty" format for new projects.
+<BR><BR>
+<B><CENTER><FONT SIZE=5 color=#ff0000>NOTICE</FONT></CENTER>
+April 6th, 2015<BR>
+The work of cleaning up the 3D modules is finished at last.<BR>
+<BR>
+I'll try to explain what happened, for those who would like to know (the others can just jump to the library files).<BR>
+First of all, I was contacted by someone working to improve the render, and informed that there was something amiss in my modules (should have happened around june/july 2014).<BR>
+You have to understand that, when I began making my library, Kicad won't use much of the material properties such as ambience, specular, emission and brilliance.<BR>
+Not knowing what these parameters were (3D modeling is not my work), the first modules I made were in fact made with only the diffused color set, leaving ambience, specular and brilliance to 100% and emisison to 0%.<BR>
+Some time later, I decided to give diffused, ambience, specular and emission the same value, again leaving brilliance set at 100%.<BR>
+In all of this, the colors in Wings3D were quite different from the ones displayed by Kicad, so I had to go on with trials and errors until I got the right color displayed in Kicad.<BR>
+<BR>
+When the improvements in Kicad started to use all these parameters in the right way, all of a sudden the models weren't rendered in the right way anymore.<BR>
+<CENTER><IMG src="/elettronica/kicad/imgs/00_original.jpg" align=center width=470><BR></CENTER>
+<BR>
+I had first to start by changing out the colors of most modules. This was the first update on most libraries. Yet, there was something not going well, since all the modules created with more than a single block of material or with complex surfaces still got rendered with weird shadows and reflections all around.<BR>
+<CENTER><IMG src="/elettronica/kicad/imgs/01_cleaned_colors.jpg" align=center width=470><BR></CENTER>
+<BR>
+This was when I became frustrated and decided to stop making new modules until I got the right solution. There are already around 1800 3D models, and adding others that will have to be modified in a near future would have been stupid.<BR>
+<BR>
+Finally, just after Christmas 2014, someone else pointed me to a <A href="https://groups.yahoo.com/neo/groups/kicad-users/conversations/topics/19244" target="blank"><FONT color=#0ff3d5>yahoo group</FONT></A> where a partial solution was found to clean this mess.<BR>
+Since the program they made was for Windows, I tried this solution myself by making a Linux script that did the same. What this program did was wipe out the normal informations from the wrl files made with Wings 3D in order to force Kicad to render them in a better way.<BR>
+While giving better results than the original modules, this was not yet a complete solution, as a certain amount of weird reflections and shadows were still present.<BR>
+<CENTER><IMG src="/elettronica/kicad/imgs/02_wiped_normals.jpg" align=center width=470><BR></CENTER>
+<BR>
+As a matter of fact, this is another thing that can show how much powerful GNU/Linux is for work. What needed a specific program in Windows is just a small script that I made around the "sed" command to pass to it the right files to change.<BR>
+You can download it from <A href="/elettronica/kicad/kicadwrlcleaner.sh"><FONT color=#0ff3d5>here</FONT></A>, even if it is now quite useless (keep reading). It is not fool-prof, but it should be more than enough to do what it needs to.<BR>
+You simply have to call it with the parent directory on which to start as a parameter.<BR>
+Example: ./kicadwrlcleaner.sh /tmp/somedir<BR>
+This will parse all the subdirs of /tmp/somedir and clean out all the vrml files made by Wings 3D.<BR>
+<BR>
+The same person told me that in another post there was a final solution, consisting in setting the edges hardness to "hard" in Wings 3D models for the edges on flat surfaces and corners, while leaving it to "soft" for the others.<BR>
+That solution finally proved to be the right one. I came to it just on january 6, 2015.<BR>
+<CENTER><IMG src="/elettronica/kicad/imgs/03_edge_hardness.jpg" align=center width=470><BR></CENTER>
+<BR>
+On some components, there are up to 13 color parameters to change for each color, and with 2, 3 or more colors for each component it is not an easy job. Each module must be changed by hand in Wings 3D.<BR>
+As an example, it took me about 4 hours to change the components in the four libraries conn_gmkds, conn_mkds, conn_mpt, conn_pt-1_5. For each module I have to change the colors and to set the hardness on the edges (selecting them by hand).<BR>
+<CENTER><FONT SIZE=5 color=#ff0000>END OF NOTICE</FONT></CENTER></B>
+<BR><BR>
+<FONT color=#ff0000><B>NOTES</B>:<BR>
+<LI>In my libraries I follow my numeration, that in most cases - but NOT always - is the standard one, so please check your pinout before developing the PCB.
+<LI>To correctly view the 3D modules, it is necessary to download the PCBnew libraries suited to your operating system.
+<LI>I advise to remove all the original libraries before adding mine. Some components have identical names and Kicad can get the wrong ones.
+<LI>In the changelog are also listed the library structure changes, so if you wish to update your files I suggest that you check if the X component is still in the Y library
+ or has been moved somewhere else. The changes don't come at random, but only whenever it will be convenient to create a new, more specific, library for a component family.
+ Basically, a single component without an already defined library will go inside misc_comp. If, with time, the similar components count gets over a certain threshold (usually over 5-6),
+ a new specific library will be created, and all these components will be moved inside it.
+<LI>A recent version of Kicad (at least 2013-03) is required in order to use the libraries. Since the new versions of Kicad seem to take care of the path structure, starting from 2013/07/14
+ I've removed the distiction between Windows and Linux modules.</FONT><BR>
+<BR><BR><BR>
+<CENTER><B><FONT size=6 color=#9999ff>EESCHEMA LIBRARIES</FONT></B> <FONT size=2 color=#ff0000>symbols: 627</FONT></CENTER>
+<TABLE width=800px border=0  align="center">
+<TR><TD><A href="/kicad_libs/library/lib_power.zip"><FONT color=#0ff3d5>Power symbols</FONT></A> <FONT color=#ffaaaa>(16/08/2009)</FONT> (original with some modifications)<BR>
+<UL>
+<U>Added or modified symbols</U>:<BR>
+VDD<BR>
+VCC<BR>
+DGND<BR>
+AGND<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD><A href="/kicad_libs/library/lib_w_analog.zip"><FONT color=#0ff3d5>Analogic ICs</FONT></A> <FONT color=#ffaaaa>(19/04/2015)</FONT><BR>
+<UL>
+78XX (78xx 1A Linear Regulator, TO package)<BR>
+78XX-DPAK (78xx 1A Linear Regulator, DPAK package)<BR>
+78XX-SO (78xx 1A Linear Regulator, SO package)<BR>
+AD5320 (DAC 12bit MSOP-8)<BR>
+AD734 (4-Quadrant Multiplier/Divider)<BR>
+ADG719-EP (CMOS 1.8 V to 5.5 V, 2.5ohm 2:1 Mux/SPDT Switch in SOT-23)<BR>
+ADP3110A (Dual Bootstrapped 12V Mosfet driver)<BR>
+AP7312-DFN (Dual 150mA low quiescent current fast transient LDO linear regulator, DFN package)<BR>
+AP7312-SOT (Dual 150mA low quiescent current fast transient LDO linear regulator, SOT package)<BR>
+CS434x (10-pin, 24-Bit, 192 kHz Stereo D/A Converter)<BR>
+CS9326L (Single chip Wavetable music synthesizer, PLCC-28 package)<BR>
+CS9326Q (Single chip Wavetable music synthesizer, LQFP-44 package)<BR>
+TS4871 (Output Rail-to-Rail 1W audio power amplifier with standby mode)<BR>
+FAN7382 (Half-Bridge Mosfet driver, HI-side and LO-side)<BR>
+IR2183 (Half-Bridge Mosfet driver, HI-side and LO-side)<BR>
+L298N (Dual full bridge Driver, Multiwatt15 package)<BR>
+L298P (Dual full bridge Driver, PowerSO-20 package)<BR>
+L6203 (DMOS full bridge Driver, Multiwatt11 package)<BR>
+L6506 (Current controller for stepping motor, DIL package)<BR>
+L6506D (Current controller for stepping motor, SOIC package)<BR>
+LFxx-DPAK (LFxx 500mA very low drop Linear Regulator, D-PAK package)<BR>
+LFxx-Pentawatt (LFxx 500mA very low drop Linear Regulator, Pentawatt package)<BR>
+LFxx-PPAK (LFxx 500mA very low drop Linear Regulator, PPAK package)<BR>
+LFxx-TO220 (LFxx 500mA very low drop Linear Regulator, TO220 package)<BR>
+LH0063 (Ultra Fast Buffer, TO3-8 package)<BR>
+LM50 (SOT-23 Single-Supply Centigrade Temperature Sensor)<BR>
+LM311 (Voltage comparator)<BR>
+LM317-PTH (LM317 series 1A Adjustable linear regulator, PTH version)<BR>
+LM317-SMD (LM317 series 1A Adjustable linear regulator, SMD version)<BR>
+LM324 (Low Power Quad Operational Amplifiers)<BR>
+LM358 (Low Power Dual Operational Amplifiers)<BR>
+LM1117-SOT (800mA Low Dropout Linear Regulator, SOT packages)<BR>
+LM1117-TO (800mA Low Dropout Linear Regulator, TO220 package)<BR>
+LM1117-WSON (800mA Low Dropout Linear Regulator, WSON package)<BR>
+LM1578A (LM1578A/LM2578A/LM3578A Switching Regulator)<BR>
+LM2578A (LM1578A/LM2578A/LM3578A Switching Regulator)<BR>
+LM2731 (0.6/1.6 MHz Boost Converter With 22V Internal FET Switch in SOT23)<BR>
+LM3402 (0.5A Constant Current Buck Regulator for Driving High Power LEDs)<BR>
+LM3578A (LM1578A/LM2578A/LM3578A Switching Regulator)<BR>
+LM4752 (Stereo 11W Audio power amplifier)<BR>
+LM6171 (High Speed Low Power Low Distortion Voltage Feedback Amplifier)<BR>
+LMH6702-SO8 (1.7 GHz, Ultra Low Distortion, Wideband Op Amp, SO8 package)<BR>
+LMH6702-SOT (1.7 GHz, Ultra Low Distortion, Wideband Op Amp, SOT23-5 package)<BR>
+LPS25H (MEMS pressure sensor)<BR>
+LSM9DS0 (iNEMO intertial module: 3D accelerometer, 3D gyroscope, 3D magnetometer)<BR>
+LT3652 (Power tracking 2A battery charger for Solar Power)<BR>
+LT8610 (42V, 2.5A Synchronous Step-Down Regulator with 2.5uA Quiescent Current)<BR>
+LTC3127-DD (1A Buck-Boost DC/DC converter with programmable input current limit, DFN package)<BR>
+LTC3127-MSE (1A Buck-Boost DC/DC converter with programmable input current limit, MSOIC package)<BR>
+LTC4267-SSOP (Power over Ethernet IEEE 802.3af PD interface with integrated switching regulator, SSOP package)<BR>
+LTC4267-DFN (Power over Ethernet IEEE 802.3af PD interface with integrated switching regulator, DFN package)<BR>
+MAX764 (-5V/-12V/-15V or Adjustable, High-Efficiency, Low IQ DC-DC Inverters)<BR>
+MAX1684 (Low-Noise, 14V Input, 1A, PWM Step-Down Converter)<BR>
+MBI6651GSD (1A Step Down Converter)<BR>
+MC34063 (1.5A step up/down/inverting switching regulator)<BR>
+MC34167 (5A step up/down/inverting switching regulator)<BR>
+MCAxxDxxD (Dual output DC/DC converters, DIP package)<BR>
+MCAxxDxxS (Dual output DC/DC converters, SIP package)<BR>
+MCP1702_TO (250mA Low Dropout Linear Regulator, TO package)<BR>
+MCP1702_SOT (250mA Low Dropout Linear Regulator, SOT package)<BR>
+MCP3002 (2.7V 2 Channel 10-Bit ADC with SPI Serial Interface)<BR>
+MCP3004 (2.7V 4 Channel 10-Bit ADC with SPI Serial Interface)<BR>
+MCP3008 (2.7V 8 Channel 10-Bit ADC with SPI Serial Interface)<BR>
+MCP48x2 (8/10/12-Bit Dual Voltage Output DAC with Internal VREF and SPI Interface)<BR>
+MCP601-DIL (single 2.7V to 6.0V Single Supply CMOS Op Amps, dil package) <BR>
+MCP601-SOT (single 2.7V to 6.0V Single Supply CMOS Op Amps, sot package) <BR>
+MCP601r-SOT (single 2.7V to 6.0V Single Supply CMOS Op Amps, sot package) <BR>
+MCP602  (dual 2.7V to 6.0V Single Supply CMOS Op Amps) <BR>
+MCP603-DIL (single 2.7V to 6.0V Single Supply CMOS Op Amps with Chip Select, dil package) <BR>
+MCP603-SOT (single 2.7V to 6.0V Single Supply CMOS Op Amps with Chip Select, sot package) <BR>
+MCP604 (quad 2.7V to 6.0V Single Supply CMOS Op Amps) <BR>
+MCP73831-DFN (Miniature single-cell Li-Ion,Li-Polymer charge controller, DFN2x3 package)<BR>
+MCP73831-DFN (Miniature single-cell Li-Ion,Li-Polymer charge controller, SOT23-5 package)<BR>
+MPU-9150 (9-axis MotionTracking device)<BR>
+NE555 (timer)<BR>
+NJU7771F (Low Dropout linear regulator)<BR>
+NJU7772F (Low Dropout linear regulator)<BR>
+NJU7773F (Low Dropout linear regulator)<BR>
+NJU7774F (Low Dropout linear regulator)<BR>
+NJU7775F (Low Dropout linear regulator)<BR>
+NJU7776F (Low Dropout linear regulator)<BR>
+SAM2195 (Low power single chip synthesizer with effects)<BR>
+SI7020-A10 (I2C Humidity and Temperature sensor)<BR>
+TDA2822M (Dual low voltage Power Amplifiers)<BR>
+TL431 (programmable shunt regulator)<BR>
+TL2575 (1A Simple Step-Down switching voltage regulator)<BR>
+TLV431-D (Low-Voltage adjustable precision shunt regulator, SOIC-8 package)<BR>
+TLV431-DBV (Low-Voltage adjustable precision shunt regulator, SOT23-5 package)<BR>
+TLV431-DBZ (Low-Voltage adjustable precision shunt regulator, SOT23 package)<BR>
+TLV431-DCK (Low-Voltage adjustable precision shunt regulator, SC70-6 package)<BR>
+TLV431-LP (Low-Voltage adjustable precision shunt regulator, TO92 package)<BR>
+TLV431-PK (Low-Voltage adjustable precision shunt regulator, SOT89 package)<BR>
+TMP3x (Low voltage Temperature Sensor)<BR>
+TPA3123D2 (25-W Stereo Class-D Audio Power Amplifier)<BR>
+TPS7A16 (60V 100mA LDO)<BR>
+TPS7A30xx (–36V, –200mA, Ultra low-Noise, Negative Linear Regulator)<BR>
+TPS7A49 (36V, 150mA, Ultra low-Noise, Positive Linear Regulator)<BR>
+TS925I (RR High Out Current OpAmp)<BR>
+UA741 (General Purpose Single Operational Amplifier)<BR>
+ULN2803 (Darlington Transistor array)<BR>
+VNH5019A-E (Automotive fully integrated H-bridge motor driver)<BR>
+VS1003-B (Low power single chip synthesizer with effects, BGA-49 package)<BR>
+VS1003-L (Low power single chip synthesizer with effects, LQFP-48 package)<BR>
+VS1053B (OGG/MP3/AAC/WMA/FLAC/MIDI audio codec)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD><A href="/kicad_libs/library/lib_w_connectors.zip"><FONT color=#0ff3d5>Connectors</FONT></A> <FONT color=#ffaaaa>(6/04/2015)</FONT><BR>
+<UL>
+arduino_header (full header for the Arduino board)<BR>
+arduino_mega_header (full header for the Arduino Mega/Due board)<BR>
+arduino_nano_header (full header for the Arduino Nano board)<BR>
+dc_jack<BR>
+db-9<BR>
+db-15<BR>
+db-25<BR>
+db-26<BR>
+db-28<BR>
+db-37<BR>
+db-50<BR>
+db-68<BR>
+db-100<BR>
+header_1<BR>
+header_2<BR>
+header_2x2<BR>
+header_3<BR>
+header_3x2<BR>
+header_4<BR>
+header_4x2<BR>
+header_5<BR>
+header_5x2<BR>
+header_6<BR>
+header_6x2<BR>
+header_7<BR>
+header_7x2<BR>
+header_8<BR>
+header_8x2<BR>
+header_9<BR>
+header_9x2<BR>
+header_10<BR>
+header_10x2<BR>
+header_11<BR>
+header_11x2<BR>
+header_12<BR>
+header_12x2<BR>
+header_13<BR>
+header_13x2<BR>
+header_14<BR>
+header_14x2<BR>
+header_15<BR>
+header_15x2<BR>
+header_16<BR>
+header_16x2<BR>
+header_17<BR>
+header_17x2<BR>
+header_18<BR>
+header_18x2<BR>
+header_19<BR>
+header_19x2<BR>
+header_20<BR>
+header_20x2<BR>
+header_21x2<BR>
+header_22x2<BR>
+header_23x2<BR>
+header_24x2<BR>
+header_25x2<BR>
+header_26x2<BR>
+header_27x2<BR>
+header_28x2<BR>
+header_29x2<BR>
+header_30x2<BR>
+header_31x2<BR>
+header_32x2<BR>
+header_33x2<BR>
+header_34x2<BR>
+header_35x2<BR>
+header_36x2<BR>
+header_37x2<BR>
+header_38x2<BR>
+header_39x2<BR>
+header_40x2<BR>
+header_41x2<BR>
+header_42x2<BR>
+header_43x2<BR>
+header_44x2<BR>
+header_45x2<BR>
+header_46x2<BR>
+header_47x2<BR>
+header_48x2<BR>
+header_49x2<BR>
+header_50x2<BR>
+jack_3.5mm_3pin<BR>
+jack_3.5mm_4pin<BR>
+jack_3.5mm_5pin<BR>
+raspi_io_header (Header for the RaspberryPI A / B I/O connector)<BR>
+raspi_io_header_b+ (Header for the RaspberryPI B+ / 2 I/O connector)<BR>
+rj45-wiznet-rb1-125bag1a (RJ45 connector, wiznet RB1-125BAG1A)<BR>
+rj45_wurth-7499211122A (RJ45 connector, Wurth 7499211122A)<BR>
+stm32f0_discovery_header (Header for the STM32 F0 Discovery board)<BR>
+stm32f3_discovery_header (Header for the STM32 F3 Discovery board)<BR>
+stm32f4_discovery_header (Header for the STM32 F4 Discovery board)<BR>
+stm32vl_discovery_header (Header for the STM32 VL Discovery board)<BR>
+usb-b<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD><A href="/kicad_libs/library/lib_w_device.zip"><FONT color=#0ff3d5>Various discrete components</FONT></A> <FONT color=#ffaaaa>(23/03/2014)</FONT><BR>
+<UL>
+balun_2450bm15a0002 (Balun-Filter for TI CC253X, CC254X, CC257X, CC853X, CC852X)<BR>
+battery<BR>
+bav199 (double diode)<BR>
+bridge (diode bridge)<BR>
+buzzer (polarized buzzer)<BR>
+cap (polarized capacitor)<BR>
+cap_feedthrough (3 pin feedthrough capacitor)<BR>
+cap np (unpolarized capacitor)<BR>
+crystal (quartz crystal)<BR>
+diode<BR>
+encoder (rotary encoder)<BR>
+encoder_switch (rotary encoder with switch)<BR>
+fuse<BR>
+inductor<BR>
+jumper<BR>
+led<BR>
+led_bicolor (led bicolore 2 pin)<BR>
+pot (trimmer)<BR>
+pot_dual (dual trimmer)<BR>
+r<BR>
+r-pack 8 (8 independent resistors)<BR>
+r-sil_4 (4 sil resistors + common pin)<BR>
+r-sil_4nb (2 independent resistors, sil4 package)<BR>
+r-sil_5 (5 sil resistors + common pin)<BR>
+r-sil_6 (6 sil resistors + common pin)<BR>
+r-sil_6nb (3 independent resistors, sil6 package)<BR>
+r-sil_7 (7 sil resistors + common pin)<BR>
+r-sil_8 (8 sil resistors+ common pin)<BR>
+r-sil_8nb (4 independent resistors, sil8 package)<BR>
+r-sil_9 (9 sil resistors + common pin)<BR>
+r-sil_10 (10 sil resistors + common pin)<BR>
+r-sil_10nb (5 independent resistors, sil10 package)<BR>
+r-sil_11 (11 sil resistors + common pin)<BR>
+r-sil_12 (12 sil resistors + common pin)<BR>
+r-sil_12nb (6 independent resistors, sil12 package)<BR>
+r-sil_13 (13 sil resistors + common pin)<BR>
+r-sil_14 (14 sil resistors + common pin)<BR>
+r-sil_14nb (7 independent resistors, sil14 package)<BR>
+resonator (3 pin ceramic resonator)<BR>
+schottky<BR>
+sw_push (push button)<BR>
+sw_spdt (switch spdt)<BR>
+sw_sp3t (switch sp3t)<BR>
+trasf_bip (transformer with bipolar output)<BR>
+trasf_dual (dual transformer)<BR>
+trasf_dual_out (dual output transformer)<BR>
+trasf_pa1130nl (PoE power transformer)<BR>
+trasf_pa1131nl (PoE power transformer)<BR>
+trasf_pa1132nl (PoE power transformer)<BR>
+trasf_pa1133nl (PoE power transformer)<BR>
+trasf_pa1134nl (PoE power transformer)<BR>
+trasf_pa1135nl (PoE power transformer)<BR>
+trasf_pa1179nl (PoE power transformer)<BR>
+trasf_pa1180nl (PoE power transformer)<BR>
+trasf_pa1181nl (PoE power transformer)<BR>
+trasf_pa1182nl (PoE power transformer)<BR>
+trasf_pa1183nl (PoE power transformer)<BR>
+trasf_pa1184nl (PoE power transformer)<BR>
+trasf_unip (single transformer)<BR>
+tvs_bipol (bipolar TVS)<BR>
+varistor<BR>
+vbt2045c (Dual low-voltage TrenchMOS barrier Schottky rectifier)<BR>
+zener<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD><A href="/kicad_libs/library/lib_w_logic.zip"><FONT color=#0ff3d5>Logics</FONT></A> <FONT color=#ffaaaa>(5/08/2014)</FONT><BR>
+<UL>
+4093 (quad 2-input NAND Schmitt Trigger, single gate)<BR>
+7400 (quad 2-input NAND gate, single gate)<BR>
+7402 (quad 2-input NOR gate, single gate)<BR>
+7404 (hex inverter, single gate)<BR>
+7407 (hex buffers/drivers, single gate)<BR>
+7408 (quad 2-input AND gate, single gate)<BR>
+7410 (triple 3-input NAND gate, single gate)<BR>
+7411 (triple 3-input AND gate, single gate)<BR>
+7413 (dual 4-input NAND Schmitt-Trigger gate, single gate)<BR>
+7414 (hex inverter Schmitt-Trigger, single gate)<BR>
+7420 (dual 4-input NAND gate, single gate)<BR>
+7421 (dual 4-input AND gate, single gate)<BR>
+7427 (triple 3-input NOR gate, single gate)<BR>
+7430 (8-input NAND gate, single gate)<BR>
+7432 (quad 2-input OR gate, single gate)<BR>
+7474 (dual D-Type flip-flop with preset and clear)<BR>
+744049 (Hex Buffers, Inverting, single gate)<BR>
+744050 (Hex Buffers, Non-inverting, single gate)<BR>
+74hc08  (quad 2-input AND gate)<BR>
+74hc14 (hex inverting Schmitt trigger)<BR>
+74hc138 (3-to-8 line inverting decoder/demultiplexer)<BR>
+74hc194 (4-bit bidirectional shift register)<BR>
+74hc244 (octal buffer/line driver, 3-state)<BR>
+74hc245 (octal bus transceiver, 3-state out)<BR>
+74hc540 (inverting octal buffer/line driver, 3-state)<BR>
+74hc574 (octal d-type flip-flop, 3-state out)<BR>
+74hc640 (octal inverting bus transceivers, 3-state out)<BR>
+74hc4049 (Hex Buffers, Inverting)<BR>
+74hc4050 (Hex Buffers, Non-inverting)<BR>
+74hc4051 (8 channel multiplexer-demultiplexer)<BR>
+74hc4066 (quad bilateral switches)<BR>
+74hc4094 (8 stage shift and store bus register, 3-state out)<BR>
+74ls42 (4-line BCD to 10-line decimal decoder)<BR>
+m5450 (34 bit LED display driver)<BR>
+max7219 (7-segments, 8 digits LED display driver)<BR>
+max7221 (7-segments, 8 digits LED display driver)<BR>
+ntb0102 (Dual supply translating transceiver, auto direction sensing, 3-state)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD><A href="/kicad_libs/library/lib_w_memory.zip"><FONT color=#0ff3d5>Memory</FONT></A> <FONT color=#ffaaaa>(18/03/2015)</FONT><BR>
+<UL>
+24xx16B-CS (16Kb I2C EEPROM, Microchip chip size package)<BR>
+24xx16B-DIL (16Kb I2C EEPROM, Microchip dual-inline packages)<BR>
+24xx16B-SOT (16Kb I2C EEPROM, Microchip SOT23-5 package)<BR>
+24xx128-CS (128Kb I2C EEPROM, Microchip chip size package)<BR>
+24xx128-DIL (128Kb I2C EEPROM, Microchip dual-inline packages)<BR>
+24xx128-MSOP (128Kb I2C EEPROM, Microchip MSOP package)<BR>
+24xx256-CS (256Kb I2C EEPROM, Microchip chip size package)<BR>
+24xx256-DIL (256Kb I2C EEPROM, Microchip dual-inline packages)<BR>
+24xx256-MSOP (256Kb I2C EEPROM, Microchip MSOP package)<BR>
+24xx512-CS (512Kb I2C EEPROM, Microchip chip size package)<BR>
+24xx512-DIL (512Kb I2C EEPROM, Microchip dual-inline packages)<BR>
+24xx512-TSSOP (512Kb I2C EEPROM, Microchip TSSOP-14 package)<BR>
+AS7C38098A-BGA (512K X 16 bit high speed CMOS SRAM, Allied Memory TFBGA package)<BR>
+AS7C38098A-TSOP (512K X 16 bit high speed CMOS SRAM, Allied Memory TSOP package)<BR>
+IS4XTR16256A (256M X 16 BIT DDR3 SRAM)<BR>
+IS4XTR85120A (512M X 8 BIT DDR3 SRAM)<BR>
+IS61WV51216-BGA (512K X 16 bit high speed asynchronous CMOS static RAM with 3.3V supply, ISSI TFBGA package)<BR>
+IS61WV51216-TSOP (512K X 16 bit high speed asynchronous CMOS static RAM with 3.3V supply, ISSI TSOP package)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD><A href="/kicad_libs/library/lib_w_microcontrollers.zip"><FONT color=#0ff3d5>Microcontrollers</FONT></A> <FONT color=#ffaaaa>(19/04/2015)</FONT><BR>
+<UL>
+at90usb82_162<BR>
+atmega164_324_644_1284p-dip<BR>
+atmega164_324_644_1284p-drqfn<BR>
+atmega164_324_644_1284p-vfbga<BR>
+atmega48_88_168_328-28smd<BR>
+atmega48_88_168_328-32smd<BR>
+atmega48_88_168_328-dip<BR>
+atsam4sxb-lqfp<BR>
+atsam4sxb-qfn<BR>
+atsam4sxc-bga<BR>
+atsam4sxc-lqfp<BR>
+attiny13-10qfn<BR>
+attiny13-20qfn<BR>
+attiny13-dip<BR>
+cat811<BR>
+cat812<BR>
+cc2530f<BR>
+cy8c21234<BR>
+ice40hx1k-vq100<BR>
+ice40hx1k-cb132<BR>
+ice40hx1k-tq144<BR>
+ice40hx4k-cb132<BR>
+ice40hx4k-tq144<BR>
+ice40hx8k-cb132<BR>
+ice40hx8k-cm225<BR>
+ice40hx8k-ct256<BR>
+lpc122xxx48<BR>
+lpc122xxx64<BR>
+lpc1769-bga<BR>
+lpc1769-lqfp<BR>
+mcf5223x-lqfp80<BR>
+mcf5223x-lqfp112<BR>
+mcf5223x-bga121<BR>
+mcp120-sn<BR>
+mcp130-sn<BR>
+mcp120d-to<BR>
+mcp130d-to<BR>
+mcp130f-to<BR>
+mcp120g-to<BR>
+mcp120h-to<BR>
+mcp130h-to<BR>
+mcp130-tt<BR>
+mk20dxxvlk7<BR>
+p8x32A-dip<BR>
+p8x32A-smd<BR>
+pic12f609<BR>
+pic12f615<BR>
+pic12f617<BR>
+pic12f683<BR>
+pic16f1503-DIL<BR>
+pic16f628a<BR>
+pic16f88-DIP<BR>
+pic16f88-SSOP<BR>
+pic16f874a-DIP<BR>
+pic16f876a<BR>
+pic16f877a<BR>
+pic16f877a-DIP<BR>
+pic16f884-DIP<BR>
+pic16f887-DIP<BR>
+pic18f242<BR>
+pic18f252<BR>
+pic18f2480<BR>
+pic18f4585-DIP<BR>
+pic18f4620<BR>
+pic18f4680-DIP<BR>
+pic18f66j60<BR>
+pic24fjxxxgb106-pt<BR>
+pic24fjxxxgb106-mr<BR>
+pic24fjxxxgb108-pt<BR>
+pic24fjxxxgb110-px<BR>
+stm32f102cx<BR>
+stm32f102rx<BR>
+stm32f405rg<BR>
+stm32f405ox<BR>
+stm32f40xvx<BR>
+stm32f40xzx<BR>
+stm32f407lx-lqfp<BR>
+stm32f407lx-ufbga<BR>
+tcm809 (3-pin microcontroller reset monitor)<BR>
+tcm810 (3-pin microcontroller reset monitor)<BR>
+upd70433-g<BR>
+upd70433-r<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD><A href="/kicad_libs/library/lib_w_opto.zip"><FONT color=#0ff3d5>Optoelectronic devices</FONT></A> <FONT color=#ffaaaa>(5/08/2014)</FONT><BR>
+<UL>
+6N138 (Single channel, High Speed Optocouplers)<BR>
+7SEGMENTS (common anode 7seg display, generic)<BR>
+AC_OPTO (AC optocoupler, DIP6 package)<BR>
+ACDA02 (dual common anode 7seg display, Kingbright ACDA02 series)<BR>
+CMD-5571x00 (7x5 dot matrix display, common cathode, US Electronics CMD-5571 series)<BR>
+CMD-5572x00 (7x5 dot matrix display, common anode, US Electronics CMD-5572 series)<BR>
+CPC1117N (Normally closed Solid State Relay)<BR>
+CREE_MC-E (Cree MC-E RGBW power LED)<BR>
+EDISON_FEDERAL_5050 (Edison Federal 5050 RGBW power LED)<BR>
+HDSP-Uxxx (common anode 7seg display, AVAGO HDSP series)<BR>
+KB814 (single AC optocoupler, DIP4 package)<BR>
+KB824 (dual AC optocoupler, DIP8 package)<BR>
+KB834 (triple AC optocoupler, DIP12 package)<BR>
+KB844 (quad AC optocoupler, DIP16 package)<BR>
+PLCC6_LED<BR>
+POWER_LED (LED with heatsink pin)<BR>
+RGB_LED<BR>
+RGB_POWER_LED (RGB LED with heatsink pin)<BR>
+SAxx-xxxxxx (common anode 7seg display, Kingbright SA series)<BR>
+SA50-xxxxx (5" 7seg display, Kingbright SA50 series)<BR>
+SEOUL_Z7 (Seoul Z7 RGBW power LED)<BR>
+SFH5712 (High accuracy ambient light sensor with I2C bus interface)<BR>
+TKS-363H  (common cathode 7seg display, TKS series)<BR>
+TLP523 (single DC optocoupler, DIP4 package)<BR>
+TLP523-2 (dual DC optocoupler, DIP8 package)<BR>
+TLP523-4 (quad DC optocoupler, DIP16 package)<BR>
+TLP624 (single DC optocoupler, DIP4 package)<BR>
+TLP624-2 (dual DC optocoupler, DIP8 package)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD><A href="/kicad_libs/library/lib_w_relay.zip"><FONT color=#0ff3d5>Relais</FONT></A> <FONT color=#ffaaaa>(30/11/2013)</FONT><BR>
+<UL>
+fotek_SSR (Fotek SSR type solid state relay)<BR>
+hssr-8200 (200V/160 ohm Small Signal Solid State Relay)<BR>
+relay_34.51 (34.51 Form C relay)<BR>
+relay_34.81-7048 (34.81-7048 solid state relay)<BR>
+relay_34.81-8240 (34.81-8240 solid state relay)<BR>
+relay_34.81-9024 (34.81-9024 solid state relay)<BR>
+relay_40.31 (40.31 Form C relay)<BR>
+relay_40.51 (40.51 Form C relay)<BR>
+relay_40.52 (40.52 2 Form C Relay)<BR>
+relay_40.61 (40.61 16A Form C Relay)<BR>
+relay_9001 (Reed relay, Coto 9001)<BR>
+relay_9002 (Reed relay, Coto 9002)<BR>
+relay_dpdt (2 Form C relay)<BR>
+relay_dk1a (1 Form A relay, Matsushita DK1a)<BR>
+relay_dk1a-l2 (1 Form A, dual coil latch relay, Matsushita DK1a-L2)<BR>
+relay_dk1a1b (1 Form A + 1 Form B relay, Matsushita DK1a1b)<BR>
+relay_dk1a1b-l2 (1 Form A + 1 Form B, dual coil latch relay, Matsushita DK1a1b-L2)<BR>
+relay_dk2a (2 Form A relay, Matsushita DK2a)<BR>
+relay_dk2a-l2 (2 Form A, dual coil latch relay, Matsushita DK2a-L2)<BR>
+relay_gq (2 Form C relay, Panasonic GQ)<BR>
+relay_hb (2 Form C relay, National HB)<BR>
+relay_HJR-3FF_h (1 Form A relay, Tianbo HJR)<BR>
+relay_HJR-3FF_z (1 Form C relay, Tianbo HJR)<BR>
+relay_pe (1 Form C relay, Schrack PE)<BR>
+relay_rt1 (1 Form C relay, Schrack RT1)<BR>
+relay_rt1_spno (1 Form A relay, Schrack RT1)<BR>
+relay_spdt (1 Form C relay)<BR>
+relay_sj-1m (1 Form A relay, Sanyou SJ-x-1xxxM)<BR>
+relay_sy (1 Form C relay, Takamisawa SY)<BR>
+relay_t9as1x1 (1 Form A relay, TE T9AS1x1)<BR>
+relay_t9as2x1 (1 Form B relay, TE T9AS2x1)<BR>
+relay_t9as5x1 (1 Form C relay, TE T9AS5x1)<BR>
+relay_v23042 (2 Form C relay, Siemens V23042)<BR>
+relay_v23042-b2 (2 Form C, dual coil latch relay, Siemens V23042-B2)<BR>
+relay_v23101-d0 (1 Form B relay, TE V23101-D0)<BR>
+relay_v23101-d1 (1 Form C relay, TE V23101-D1)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD><A href="/kicad_libs/library/lib_w_rtx.zip"><FONT color=#0ff3d5>Transmission ICs</FONT></A> <FONT color=#ffaaaa>(18/03/2015)</FONT><BR>
+<UL>
+8devices_carambola2 (8Devices Carambola 2 802.11 b/g/n Wireless Network module)<BR>
+anaren_a1101r04c (Anaren A1101R04C RF module)<BR>
+anaren_a1101r08 (Anaren A1101R08x RF module)<BR>
+anaren_a1101r09 (Anaren A1101R09x RF module)<BR>
+anaren_a110lr09 (Anaren A110LR09x RF module)<BR>
+anaren_a2500r24 (Anaren A2500R24 RF module)<BR>
+anaren_a8520e24a91 (Anaren A8520E24A91 PurePath RF module)<BR>
+antenna (simple 1-pin antenna)<BR>
+antenna_shield (2-pin antenna)<BR>
+ft232bl (usb to RS232-RS485 converter)<BR>
+ft232rl (usb2 to RS232-RS485 converter)<BR>
+ft245rl (usb2 to FIFO converter)<BR>
+id_id2la (ID-Innovation ID-2LA RFID module)<BR>
+id_id12la (ID-Innovation ID-12LA RFID module)<BR>
+id_id20la (ID-Innovation ID-20LA RFID module)<BR>
+itead_hc-05 (Itead HC-05 serial Bluetooth module)<BR>
+ksz8081rn (10Base-T/100Base-TX PHY with RMII support)<BR>
+m145026 (remote control encoder)<BR>
+m145027 (remote control decoder)<BR>
+max232 (RS232 driver-receiver)<BR>
+max485 (RS485 driver-receiver)<BR>
+max3030e (15KV ESD-protected, 3.3V quad RS-422 transmitters)<BR>
+max3031e (15KV ESD-protected, 3.3V quad RS-422 transmitters)<BR>
+max3032e (15KV ESD-protected, 3.3V quad RS-422 transmitters)<BR>
+max3033e (15KV ESD-protected, 3.3V quad RS-422 transmitters)<BR>
+max3093e (15KV ESD-protected, 10Mbps, 3V/5V Low power quad RS-422/RS-485 receivers)<BR>
+max3094e (15KV ESD-protected, 10Mbps, 3V/5V Low power quad RS-422/RS-485 receivers)<BR>
+max3316-ssop (2.5V, 1uA, 460kbps, RS-232-Compatible Transceivers)<BR>
+max3316-tssop (2.5V, 1uA, 460kbps, RS-232-Compatible Transceivers)<BR>
+max3317 (2.5V, 1uA, 460kbps, RS-232-Compatible Transceivers)<BR>
+max3318 (2.5V, 1uA, 460kbps, RS-232-Compatible Transceivers)<BR>
+max3319 (2.5V, 1uA, 460kbps, RS-232-Compatible Transceivers)<BR>
+mcp2120 (IrDA Encoder/Decoder)<BR>
+mcp23017-dil (16bit I/O expander with I2C interface)<BR>
+mcp23017-qfn (16bit I/O expander with I2C interface)<BR>
+mcp23s17-dil (16bit I/O expander with SPI interface)<BR>
+mcp23s17-qfn (16bit I/O expander with SPI interface)<BR>
+mcp2551 (CAN BUS transceiver)<BR>
+panasonic_pan131x (Panasonic PAN131x Bluetooth module)<BR>
+panasonic_pan132x (Panasonic PAN132x Bluetooth module)<BR>
+pca9306-bga (Dual bidirectional I2C bus and SMBus Voltage-Level translator, BGA package)<BR>
+pca9306-dil (Dual bidirectional I2C bus and SMBus Voltage-Level translator, DIL package)<BR>
+pcf8574 (Remote 8-bit I/O expander for I2C-bus)<BR>
+qm-5767-f00 (QM-5767-F00 FM digital tuner module)<BR>
+rfm12b (Hope RFM12B RF module)<BR>
+rfm22b (Hope RFM22B RF module)<BR>
+roving_rn-42 (Roving Network Bluetooth module)<BR>
+roving_rn-42-n (Roving Network Bluetooth module)<BR>
+roving_rn-131 (Roving Network RN-131 802.11 b/g WiFi module)<BR>
+sc16is740 (Single UART with I2C-bus/SPI interface, 64-byte FIFOs, IrDA SIR)<BR>
+sc16is750 (Single UART with I2C-bus/SPI interface, 64-byte FIFOs, IrDA SIR)<BR>
+sky12347 (DC-3.0 GHz Six-Bit Digital Attenuator with Serial or Parallel Driver (0.5 dB LSB))<BR>
+sp3224e (3.0V to 5.5V RS-232 Transceivers with Auto On-Line Plus)<BR>
+sp3226e (3.0V to 5.5V RS-232 Transceivers with Auto On-Line Plus)<BR>
+telit_gl865 (Telit GL865 GSM/GPRS module)<BR>
+txs0102-bga (2-bit bidir. Voltage-Level translator for Open-Drain and Push-Pull, BGA package)<BR>
+txs0102-dil (2-bit bidir. Voltage-Level translator for Open-Drain and Push-Pull, DIL package)<BR>
+txs0102-qfn (2-bit bidir. Voltage-Level translator for Open-Drain and Push-Pull, QFN package)<BR>
+w5500 (Hardwired TCP/IP embedded ethernet controller)<BR>
+xr20m1170-16qfn (I2C/SPI UART WITH 64-byte FIFO)<BR>
+xr20m1170-16tssop (I2C/SPI UART WITH 64-byte FIFO)<BR>
+xr20m1170-24qfn (I2C/SPI UART WITH 64-byte FIFO)<BR>
+xr20m1170-24tssop (I2C/SPI UART WITH 64-byte FIFO)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD><A href="/kicad_libs/library/lib_w_transistor.zip"><FONT color=#0ff3d5>Transistors, MOSFETs, etc...</FONT></A> <FONT color=#ffaaaa>(6/04/2015)</FONT><BR>
+<UL>
+BC807DS (PNP bi-transistor)<BR>
+FDC6305N (N bi-mosfet)<BR>
+fet_n (N-JFET with generic GDS package)<BR>
+fet_n_DGS (N-JFET with numbered pins)<BR>
+fet_n_DSG (N-JFET with numbered pins)<BR>
+fet_n_GDS (N-JFET with numbered pins)<BR>
+fet_n_GSD (N-JFET with numbered pins)<BR>
+fet_n_SDG (N-JFET with numbered pins)<BR>
+fet_n_SGD (N-JFET with numbered pins)<BR>
+fet_p (N-JFET with generic GDSpackage)<BR>
+fet_p_DGS (P-JFET with numbered pins)<BR>
+fet_p_DSG (P-JFET with numbered pins)<BR>
+fet_p_GDS (P-JFET with numbered pins)<BR>
+fet_p_GSD (P-JFET with numbered pins)<BR>
+fet_p_SDG (P-JFET with numbered pins)<BR>
+fet_p_SGD (P-JFET with numbered pins)<BR>
+mos_n (N-MOS with generic GDS package)<BR>
+mos_n_DGS (N-MOS with numbered pins)<BR>
+mos_n_DSG (N-MOS with numbered pins)<BR>
+mos_n_GDS (N-MOS with numbered pins)<BR>
+mos_n_GSD (N-MOS with numbered pins)<BR>
+mos_n_SDG (N-MOS with numbered pins)<BR>
+mos_n_SGD (N-MOS with numbered pins)<BR>
+mos_p (P-MOS with generic GDS package)<BR>
+mos_p_DGS (P-MOS with numbered pins)<BR>
+mos_p_DSG (P-MOS with numbered pins)<BR>
+mos_p_GDS (P-MOS with numbered pins)<BR>
+mos_p_GSD (P-MOS with numbered pins)<BR>
+mos_p_SDG (P-MOS with numbered pins)<BR>
+mos_p_SGD (P-MOS with numbered pins)<BR>
+npn (BJT NPN with generic BCE package)<BR>
+npn_BCE (BJT NPN with numbered pins)<BR>
+npn_BEC (BJT NPN with numbered pins)<BR>
+npn_CBE (BJT NPN with numbered pins)<BR>
+npn_CEB (BJT NPN with numbered pins)<BR>
+npn_EBC (BJT NPN with numbered pins)<BR>
+npn_ECB (BJT NPN with numbered pins)<BR>
+NTMFS5832NL (Power MOS, 40V 111A, DFN5)<BR>
+pnp (BJT NPN with generic BCE package)<BR>
+pnp_BCE (BJT NPN with numbered pins)<BR>
+pnp_BEC (BJT NPN with numbered pins)<BR>
+pnp_CBE (BJT NPN with numbered pins)<BR>
+pnp_CEB (BJT NPN with numbered pins)<BR>
+pnp_EBC (BJT NPN with numbered pins)<BR>
+pnp_ECB (BJT NPN with numbered pins)<BR>
+scr (SCR with generic AKG package)<BR>
+SI3440DV (N channel 150V MOSFET, TSOT-6)<BR>
+SI4401BD (P channel 40V MOSFET, SO-8)<BR>
+triac_bta (triac with BTx series pinout)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD><A href="/kicad_libs/library/lib_w_vacuum.zip"><FONT color=#0ff3d5>Vacuum tubes</FONT></A> <FONT color=#ffaaaa>(5/08/2014)</FONT><BR>
+<UL>
+12AT7 (Double Triode Vacuum tube)<BR>
+12AU7 (Double Triode Vacuum tube)<BR>
+12AX7 (Double Triode Vacuum tube)<BR>
+12SN7GT (Double Triode Vacuum tube)<BR>
+211 (Triode Vacuum tube)<BR>
+2A3 (Triode Vacuum tube)<BR>
+2A3B (Triode Vacuum tube)<BR>
+572B (Emitter Vacuum tube)<BR>
+5814 (Double Triode Vacuum tube)<BR>
+5881 (Beam Tetrode Vacuum tube)<BR>
+6189 (Double Triode Vacuum tube)<BR>
+6201 (Double Triode Vacuum tube)<BR>
+6550 (Beam Tetrode Vacuum tube)<BR>
+6AU6 (Pentode Vacuum tube)<BR>
+6BQ5 (Pentode Vacuum tube)<BR>
+6CA7 (Pentode Vacuum tube)<BR>
+6L6G (Beam Tetrode Vacuum tube)<BR>
+6N6P (Double Triode Vacuum tube)<BR>
+6P3P (Beam Tetrode Vacuum tube)<BR>
+6SL7-GT (Double Triode Vacuum tube)<BR>
+6SN7GT (Double Triode Vacuum tube)<BR>
+7025 (Double Triode Vacuum tube)<BR>
+805 (Emitter Vacuum tube)<BR>
+811 (Emitter Vacuum tube)<BR>
+845 (Emitter Vacuum tube)<BR>
+CV5220 (Beam Tetrode Vacuum tube)<BR>
+ECC81 (Double Triode Vacuum tube)<BR>
+ECC82 (Double Triode Vacuum tube)<BR>
+ECC83 (Double Triode Vacuum tube)<BR>
+ECC88 (Double Triode Vacuum tube)<BR>
+ECC99 (Double Triode Vacuum tube)<BR>
+EF85 (Pentode Vacuum tube)<BR>
+EF86 (Pentode Vacuum tube)<BR>
+EF94 (Pentode Vacuum tube)<BR>
+EL34 (Pentode Vacuum tube)<BR>
+EL84 (Pentode Vacuum tube)<BR>
+EL156 (Pentode Vacuum tube)<BR>
+FU-5 (Emitter Vacuum tube)<BR>
+FU-811 (Emitter Vacuum tube)<BR>
+GL-211 (Triode Vacuum tube)<BR>
+GL-805 (Emitter Vacuum tube)<BR>
+GT-12AT7 (Double Triode Vacuum tube)<BR>
+KT66 (Beam Tetrode Vacuum tube)<BR>
+KT88 (Beam Tetrode Vacuum tube)<BR>
+PCF802 (Triode-Pentode Vacuum tube)<BR>
+PCL82 (Triode-Pentode Vacuum tube)<BR>
+PCL86 (Triode-Pentode Vacuum tube)<BR>
+UV-211 (Triode Vacuum tube)<BR>
+UY-807 (Emitter Vacuum tube)<BR>
+UY-845 (Emitter Vacuum tube)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR><BR>
+<CENTER><B><FONT size=6 color=#9999ff>PCBNEW LIBRARIES</FONT></B> <FONT size=2 color=#ff0000>components: 1815</FONT></CENTER>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Battery holders <FONT color=#ffaaaa>(16/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_battery_holders.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_battery_holders.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_battery_holders.jpg" align=center width=800><BR>
+<UL>
+keystone_103<BR>
+keystone_104<BR>
+keystone_105<BR>
+keystone_106<BR>
+keystone_107<BR>
+keystone_301<BR>
+keystone_499<BR>
+keystone_500<BR>
+keystone_501<BR>
+keystone_502<BR>
+keystone_1025<BR>
+keystone_1025-7<BR>
+keystone_1026<BR>
+keystone_1027<BR>
+keystone_2990<BR>
+keystone_2991<BR>
+keystone_2992<BR>
+keystone_2993<BR>
+keystone_3000<BR>
+keystone_3001<BR>
+keystone_3008<BR>
+keystone_3009<BR>
+</UL></TD></TR>
+</TABLE>
+<TABLE width=800px border=0  align="center">
+<TR><TD>PTH Capacitors <FONT color=#ffaaaa>(17/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_capacitors.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_capacitors.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_capacitors.jpg" align=center width=800><BR>
+<UL>
+cnp_7x2mm (unpolarized radial rectangular capacitor 7x2mm)<BR>
+cnp_7x4.5mm (unpolarized radial rectangular capacitor 7x4.5mm)<BR>
+cnp_7x6mm (unpolarized radial rectangular capacitor 7x6mm)<BR>
+cnp_13x4mm (unpolarized radial rectangular capacitor 13x4mm)<BR>
+cnp_18x5mm (unpolarized radial rectangular capacitor 18x5mm)<BR>
+cnp_18x6mm (unpolarized radial rectangular capacitor 18x6mm)<BR>
+cnp_18x8mm (unpolarized radial rectangular capacitor 18x8mm)<BR>
+cnp_3mm_disc (disc ceramic capacitor dia=3mm)<BR>
+cnp_6mm_disc (disc ceramic capacitor dia=6mm)<BR>
+cnp_7.5mm_disc (disc ceramic capacitor dia=7.5mm)<BR>
+cnp_12mm_disc (disc ceramic capacitor dia=12mm)<BR>
+cnpa_10x33mm (unpolarized cylindric axial capacitor dia=10mm l=33mm)<BR>
+cnpa_12x33mm (unpolarized cylindric axial capacitor dia=12mm l=33mm)<BR>
+cnpa_14x33mm (unpolarized cylindric axial capacitor dia=14mm l=33mm)<BR>
+cnpa_16x33mm (unpolarized cylindric axial capacitor dia=16mm l=33mm)<BR>
+cnpa_18x33mm (unpolarized cylindric axial capacitor dia=18mm l=33mm)<BR>
+cnpa_20x33mm (unpolarized cylindric axial capacitor dia=20mm l=33mm)<BR>
+cnpa_22x33mm (unpolarized cylindric axial capacitor dia=22mm l=33mm)<BR>
+cnpa_20x44mm (unpolarized cylindric axial capacitor dia=20mm l=44mm)<BR>
+cnpa_24x44mm (unpolarized cylindric axial capacitor dia=24mm l=44mm)<BR>
+cnpa_28x44mm (unpolarized cylindric axial capacitor dia=28mm l=44mm)<BR>
+cnpa_34x44mm (unpolarized cylindric axial capacitor dia=34mm l=44mm)<BR>
+cnpa_29x58mm (unpolarized cylindric axial capacitor dia=29mm l=58mm)<BR>
+cnpa_32x58mm (unpolarized cylindric axial capacitor dia=32mm l=58mm)<BR>
+cpa_5x11mm (cylindric axial electrolytic capacitor dia=5mm l=11mm)<BR>
+cpa_6x11mm (cylindric axial electrolytic capacitor dia=6mm l=11mm)<BR>
+cpa_8x21mm (cylindric axial electrolytic capacitor dia=8mm l=21mm)<BR>
+cpa_13x31mm (cylindric axial electrolytic capacitor dia=13mm l=31mm)<BR>
+cpa_16x31mm (cylindric axial electrolytic capacitor dia=16mm l=31mm)<BR>
+cpa_16x40mm (cylindric axial electrolytic capacitor dia=16mm l=40mm)<BR>
+cp_4x5mm (cylindric radial electrolytic capacitor dia=4mm h=5mm)<BR>
+cp_4x7mm (cylindric radial electrolytic capacitor dia=4mm h=7mm)<BR>
+cp_5x5mm (cylindric radial electrolytic capacitor dia=5mm h=5mm)<BR>
+cp_5x7mm (cylindric radial electrolytic capacitor dia=5mm h=7mm)<BR>
+cp_5x11mm (cylindric radial electrolytic capacitor dia=5mm h=11mm)<BR>
+cp_5x15mm (cylindric radial electrolytic capacitor dia=5mm h=15mm)<BR>
+cp_6.3x5mm (cylindric radial electrolytic capacitor dia=6.3mm h=5mm)<BR>
+cp_6.3x7mm (cylindric radial electrolytic capacitor dia=6.3mm h=7mm)<BR>
+cp_6.3x11mm (cylindric radial electrolytic capacitor dia=6.3mm h=11mm)<BR>
+cp_6.3x15mm (cylindric radial electrolytic capacitor dia=6.35mm h=15mm)<BR>
+cp_8x7mm (cylindric radial electrolytic capacitor dia=8mm h=7mm)<BR>
+cp_8x11.5mm (cylindric radial electrolytic capacitor dia=8mm h=11.5mm)<BR>
+cp_8x15mm (cylindric radial electrolytic capacitor dia=8mm h15mm)<BR>
+cp_8x20mm (cylindric radial electrolytic capacitor dia=8mm h=20mm)<BR>
+cp_10x12.5mm (cylindric radial electrolytic capacitor dia=10mm h=12.5mm)<BR>
+cp_10x16mm (cylindric radial electrolytic capacitor dia=10mm h=16mm)<BR>
+cp_10x20mm (cylindric radial electrolytic capacitor dia=10mm h=20mm)<BR>
+cp_10x25mm (cylindric radial electrolytic capacitor dia=10mm h=25mm)<BR>
+cp_10x30mm (cylindric radial electrolytic capacitor dia=10mm h=30mm)<BR>
+cp_12.5x15mm (cylindric radial electrolytic capacitor dia=12.5mm h=15mm)<BR>
+cp_12.5x20mm (cylindric radial electrolytic capacitor dia=12.5mm h=20mm)<BR>
+cp_12.5x25mm (cylindric radial electrolytic capacitor dia=12.5mm h=25mm)<BR>
+cp_12.5x30mm (cylindric radial electrolytic capacitor dia=12.5mm h=30mm)<BR>
+cp_12.5x35mm (cylindric radial electrolytic capacitor dia=12.5mm h=35mm)<BR>
+cp_12.5x40mm (cylindric radial electrolytic capacitor dia=12.5mm h=40mm)<BR>
+cp_16x16mm (cylindric radial electrolytic capacitor dia=16mm h=16mm)<BR>
+cp_16x20mm (cylindric radial electrolytic capacitor dia=16mm h=20mm)<BR>
+cp_16x25mm (cylindric radial electrolytic capacitor dia=16mm h=25mm)<BR>
+cp_16x31.5mm (cylindric radial electrolytic capacitor dia=16mm h=31.5mm)<BR>
+cp_16x35.5mm (cylindric radial electrolytic capacitor dia=16mm h=35.5mm)<BR>
+cp_16x40mm (cylindric radial electrolytic capacitor dia=16mm h=40mm)<BR>
+cp_18x16mm (cylindric radial electrolytic capacitor dia=18mm h=16mm)<BR>
+cp_18x20mm (cylindric radial electrolytic capacitor dia=18mm h=20mm)<BR>
+cp_18x25mm (cylindric radial electrolytic capacitor dia=18mm h=25mm)<BR>
+cp_18x31.5mm (cylindric radial electrolytic capacitor dia=18mm h=31.5mm)<BR>
+cp_18x35.5mm (cylindric radial electrolytic capacitor dia=18mm h=35.5mm)<BR>
+cp_18x40mm (cylindric radial electrolytic capacitor dia=18mm h=40mm)<BR>
+cp_22x20mm (cylindric radial electrolytic capacitor dia=22mm h=20mm)<BR>
+cp_22x25mm (cylindric radial electrolytic capacitor dia=22mm h=25mm)<BR>
+cp_22x30mm (cylindric radial electrolytic capacitor dia=22mm h=30mm)<BR>
+cp_22x35mm (cylindric radial electrolytic capacitor dia=22mm h=35mm)<BR>
+cp_22x40mm (cylindric radial electrolytic capacitor dia=22mm h=40mm)<BR>
+cp_22x45mm (cylindric radial electrolytic capacitor dia=22mm h=45mm)<BR>
+cp_22x50mm (cylindric radial electrolytic capacitor dia=22mm h=50mm)<BR>
+cp_25x20mm (cylindric radial electrolytic capacitor dia=25mm h=20mm)<BR>
+cp_25x25mm (cylindric radial electrolytic capacitor dia=25mm h=25mm)<BR>
+cp_25x30mm (cylindric radial electrolytic capacitor dia=25mm h=30mm)<BR>
+cp_25x35mm (cylindric radial electrolytic capacitor dia=25mm h=35mm)<BR>
+cp_25x40mm (cylindric radial electrolytic capacitor dia=25mm h=40mm)<BR>
+cp_25x45mm (cylindric radial electrolytic capacitor dia=25mm h=45mm)<BR>
+cp_25x50mm (cylindric radial electrolytic capacitor dia=25mm h=50mm)<BR>
+cp_30x20mm (cylindric radial electrolytic capacitor dia=30mm h=20mm)<BR>
+cp_30x25mm (cylindric radial electrolytic capacitor dia=30mm h=25mm)<BR>
+cp_30x30mm (cylindric radial electrolytic capacitor dia=30mm h=30mm)<BR>
+cp_30x35mm (cylindric radial electrolytic capacitor dia=30mm h=35mm)<BR>
+cp_30x40mm (cylindric radial electrolytic capacitor dia=30mm h=40mm)<BR>
+cp_30x45mm (cylindric radial electrolytic capacitor dia=30mm h=45mm)<BR>
+cp_30x50mm (cylindric radial electrolytic capacitor dia=30mm h=50mm)<BR>
+cp_35x20mm (cylindric radial electrolytic capacitor dia=35mm h=20mm)<BR>
+cp_35x25mm (cylindric radial electrolytic capacitor dia=35mm h=25mm)<BR>
+cp_35x30mm (cylindric radial electrolytic capacitor dia=35mm h=30mm)<BR>
+cp_35x35mm (cylindric radial electrolytic capacitor dia=35mm h=35mm)<BR>
+cp_35x40mm (cylindric radial electrolytic capacitor dia=35mm h=40mm)<BR>
+cp_35x45mm (cylindric radial electrolytic capacitor dia=35mm h=45mm)<BR>
+cp_35x50mm (cylindric radial electrolytic capacitor dia=35mm h=50mm)<BR>
+phv_h_9x17.3x14.5 (Cooper PHV series supercapacitor, horizontal, 9x17.3x14.5mm)<BR>
+phv_h_9x17.3x22 (Cooper PHV series supercapacitor, horizontal, 9x17.3x22mm)<BR>
+phv_h_9x17.3x32.5 (Cooper PHV series supercapacitor, horizontal, 9x17.3x32.5mm)<BR>
+phv_h_11x21.3x23 (Cooper PHV series supercapacitor, horizontal, 11x21.3x23mm)<BR>
+phv_h_11x21.3x32.5 (Cooper PHV series supercapacitor, horizontal, 11x21.3x32.5mm)<BR>
+phv_v_9x17.3x14.5 (Cooper PHV series supercapacitor, vertical, 9x17.3x14.5mm)<BR>
+phv_v_9x17.3x22 (Cooper PHV series supercapacitor, vertical, 9x17.3x22mm)<BR>
+phv_v_9x17.3x32.5 (Cooper PHV series supercapacitor, vertical, 9x17.3x32.5mm)<BR>
+phv_v_11x21.3x23 (Cooper PHV series supercapacitor, vertical, 11x21.3x23mm)<BR>
+phv_v_11x21.3x32.5 (Cooper PHV series supercapacitor, vertical, 11x21.3x32.5mm)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>AVX 9159 series connectors <FONT color=#ffaaaa>(11/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_9159.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_9159.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_9159.jpg" align=center width=800><BR>
+<UL>
+9159_hp_2 (AVX 9159 series 2-way horizontal plug)<BR>
+9159_hp_3 (AVX 9159 series 3-way horizontal plug)<BR>
+9159_hp_4 (AVX 9159 series 4-way horizontal plug)<BR>
+9159_hp_5 (AVX 9159 series 5-way horizontal plug)<BR>
+9159_hp_6 (AVX 9159 series 6-way horizontal plug)<BR>
+9159_hs_2 (AVX 9159 series 2-way horizontal socket)<BR>
+9159_hs_3 (AVX 9159 series 3-way horizontal socket)<BR>
+9159_hs_4 (AVX 9159 series 4-way horizontal socket)<BR>
+9159_hs_5 (AVX 9159 series 5-way horizontal socket)<BR>
+9159_hs_6 (AVX 9159 series 6-way horizontal socket)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>A/V Connectors <FONT color=#ffaaaa>(14/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_av.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_av.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_av.jpg" align=center width=800><BR>
+<UL>
+din-5 (Din 5 (MIDI), Pro Signal P/N PSG03463)<BR>
+jack_3.5_pj313d-smt (3-way 3.5mm SMD jack, HongKong RTL PJ313D)<BR>
+jack_3.5_sj1-3513-smt (3-way 3.5mm SMD jack, CUI SJ1-3513-SMT)<BR>
+jack_3.5_sj1-3514-smt (4-way 3.5mm SMD jack, CUI SJ1-3514-SMT)<BR>
+jack_3.5_sj1-3515-smt (5-way 3.5mm SMD jack, CUI SJ1-3515-SMT)<BR>
+jack_3.5_vert_lje0352-4r (Lih Sheng LJE0352-4R)<BR>
+minidin-8 (8 poles mini DIN receptacle (S-Video) - Tyco P/N 1734096-1)<BR>
+rca_black (RCA Audio connector, black, Pro Signal p/n PSG01544)<BR>
+rca_red (RCA Audio connector, red, Pro Signal p/n PSG01545)<BR>
+rca_white (RCA Audio connector, white, Pro Signal p/n PSG01546)<BR>
+rca_yellow (RCA Audio connector, yellow, Pro Signal p/n PSG01547)<BR>
+scart (scart receptacle- Tyco P/N 1483465-1)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>D-SUB Connectors <FONT color=#ffaaaa>(18/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_d-sub.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_d-sub.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_d-sub.jpg" align=center width=800><BR>
+<UL>
+db-9f (9 poles female D-SUB receptacle - Tyco P/N 4-1634584-2)<BR>
+db-9m (9 poles male D-SUB receptacle - Tyco P/N 4-338168-2)<BR>
+db-15f (15 poles female D-SUB receptacle - Tyco P/N 5747845-5)<BR>
+db-15m (15 poles male D-SUB receptacle - Tyco P/N 5747841-6)<BR>
+db-25f (25 poles female D-SUB receptacle - Tyco P/N 4-106507-2)<BR>
+db-25m (25 poles male D-SUB receptacle - Tyco P/N 5747842-5)<BR>
+db-26f (26 poles female D-SUB receptacle - Tyco Amplimite P/N 5787082-2)<BR>
+db-28f (28 poles female D-SUB receptacle - Tyco Amplimite P/N 5787082-3)<BR>
+db_37f (37 poles female D-SUB receptacle - Assmann P/N A-DF37A/KG-T2)<BR>
+db-50f (50 poles female D-SUB receptacle - Tyco Amplimite P/N 5787082-5)<BR>
+db-68f (68 poles female D-SUB receptacle - Tyco Amplimite P/N 5787082-7)<BR>
+db-100f (100 poles female D-SUB receptacle - Tyco Amplimite P/N 5787082-9)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Hirose DF12 series connectors <FONT color=#ffaaaa>(14/02/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_df12.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_df12.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_df12.jpg" align=center width=800><BR>
+<UL>
+df12(3.0)-10dp-0.5v<BR>
+df12(3.0)-10ds-0.5v<BR>
+df12(3.0)-14dp-0.5v<BR>
+df12(3.0)-14ds-0.5v<BR>
+df12(3.0)-20dp-0.5v<BR>
+df12(3.0)-20ds-0.5v<BR>
+df12(3.0)-30dp-0.5v<BR>
+df12(3.0)-30ds-0.5v<BR>
+df12(3.0)-32dp-0.5v<BR>
+df12(3.0)-32ds-0.5v<BR>
+df12(3.0)-36dp-0.5v<BR>
+df12(3.0)-36ds-0.5v<BR>
+df12(3.0)-40dp-0.5v<BR>
+df12(3.0)-40ds-0.5v<BR>
+df12(3.0)-50dp-0.5v<BR>
+df12(3.0)-50ds-0.5v<BR>
+df12(3.0)-60dp-0.5v<BR>
+df12(3.0)-60ds-0.5v<BR>
+df12(3.0)-80dp-0.5v<BR>
+df12(3.0)-80ds-0.5v<BR>
+df12a(3.0)-10ds-0.5v<BR>
+df12a(3.0)-14ds-0.5v<BR>
+df12a(3.0)-20ds-0.5v<BR>
+df12a(3.0)-30ds-0.5v<BR>
+df12a(3.0)-32ds-0.5v<BR>
+df12a(3.0)-36ds-0.5v<BR>
+df12a(3.0)-40ds-0.5v<BR>
+df12a(3.0)-50ds-0.5v<BR>
+df12a(3.0)-60ds-0.5v<BR>
+df12a(3.0)-80ds-0.5v<BR>
+df12b(3.0)-10dp-0.5v<BR>
+df12b(3.0)-10ds-0.5v<BR>
+df12b(3.0)-14dp-0.5v<BR>
+df12b(3.0)-14ds-0.5v<BR>
+df12b(3.0)-20dp-0.5v<BR>
+df12b(3.0)-20ds-0.5v<BR>
+df12b(3.0)-30dp-0.5v<BR>
+df12b(3.0)-30ds-0.5v<BR>
+df12b(3.0)-32dp-0.5v<BR>
+df12b(3.0)-32ds-0.5v<BR>
+df12b(3.0)-36dp-0.5v<BR>
+df12b(3.0)-36ds-0.5v<BR>
+df12b(3.0)-40dp-0.5v<BR>
+df12b(3.0)-40ds-0.5v<BR>
+df12b(3.0)-50dp-0.5v<BR>
+df12b(3.0)-50ds-0.5v<BR>
+df12b(3.0)-60dp-0.5v<BR>
+df12b(3.0)-60ds-0.5v<BR>
+df12b(3.0)-80dp-0.5v<BR>
+df12b(3.0)-80ds-0.5v<BR>
+df12c(3.0)-10ds-0.5v<BR>
+df12c(3.0)-14ds-0.5v<BR>
+df12c(3.0)-20ds-0.5v<BR>
+df12c(3.0)-30ds-0.5v<BR>
+df12c(3.0)-32ds-0.5v<BR>
+df12c(3.0)-36ds-0.5v<BR>
+df12c(3.0)-40ds-0.5v<BR>
+df12c(3.0)-50ds-0.5v<BR>
+df12c(3.0)-60ds-0.5v<BR>
+df12c(3.0)-80ds-0.5v<BR>
+df12d(3.0)-10dp-0.5v<BR>
+df12d(3.0)-14dp-0.5v<BR>
+df12d(3.0)-20dp-0.5v<BR>
+df12d(3.0)-30dp-0.5v<BR>
+df12d(3.0)-32dp-0.5v<BR>
+df12d(3.0)-36dp-0.5v<BR>
+df12d(3.0)-40dp-0.5v<BR>
+df12d(3.0)-50dp-0.5v<BR>
+df12d(3.0)-60dp-0.5v<BR>
+df12d(3.0)-80dp-0.5v<BR>
+df12e(3.0)-10dp-0.5v<BR>
+df12e(3.0)-14dp-0.5v<BR>
+df12e(3.0)-20dp-0.5v<BR>
+df12e(3.0)-30dp-0.5v<BR>
+df12e(3.0)-32dp-0.5v<BR>
+df12e(3.0)-36dp-0.5v<BR>
+df12e(3.0)-40dp-0.5v<BR>
+df12e(3.0)-50dp-0.5v<BR>
+df12e(3.0)-60dp-0.5v<BR>
+df12e(3.0)-80dp-0.5v<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Hirose DF13 series connectors <FONT color=#ffaaaa>(6/04/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_df13.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_df13.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_df13.jpg" align=center width=800><BR>
+<UL>
+df13-2p-125ds<BR>
+df13-3p-125ds<BR>
+df13-4p-125ds<BR>
+df13-5p-125ds<BR>
+df13-6p-125ds<BR>
+df13-7p-125ds<BR>
+df13-8p-125ds<BR>
+df13-9p-125ds<BR>
+df13-10p-125ds<BR>
+df13-11p-125ds<BR>
+df13-12p-125ds<BR>
+df13-14p-125ds<BR>
+df13-15p-125ds<BR>
+df13-2p-125dsa<BR>
+df13-3p-125dsa<BR>
+df13-4p-125dsa<BR>
+df13-5p-125dsa<BR>
+df13-6p-125dsa<BR>
+df13-7p-125dsa<BR>
+df13-8p-125dsa<BR>
+df13-9p-125dsa<BR>
+df13-10p-125dsa<BR>
+df13-11p-125dsa<BR>
+df13-12p-125dsa<BR>
+df13-13p-125dsa<BR>
+df13-14p-125dsa<BR>
+df13-15p-125dsa<BR>
+df13-2p-125h<BR>
+df13-3p-125h<BR>
+df13-4p-125h<BR>
+df13-5p-125h<BR>
+df13-6p-125h<BR>
+df13-7p-125h<BR>
+df13-8p-125h<BR>
+df13-9p-125h<BR>
+df13-10p-125h<BR>
+df13-11p-125h<BR>
+df13-12p-125h<BR>
+df13-14p-125h<BR>
+df13-15p-125h<BR>
+df13a-2p-125h<BR>
+df13a-3p-125h<BR>
+df13a-4p-125h<BR>
+df13a-5p-125h<BR>
+df13a-6p-125h<BR>
+df13a-7p-125h<BR>
+df13a-8p-125h<BR>
+df13a-9p-125h<BR>
+df13a-10p-125h<BR>
+df13a-11p-125h<BR>
+df13a-12p-125h<BR>
+df13a-14p-125h<BR>
+df13a-15p-125h<BR>
+df13a-10dp-125v<BR>
+df13a-20dp-125v<BR>
+df13a-30dp-125v<BR>
+df13a-40dp-125v<BR>
+df13c-2p-125v<BR>
+df13c-3p-125v<BR>
+df13c-4p-125v<BR>
+df13c-5p-125v<BR>
+df13c-6p-125v<BR>
+df13c-7p-125v<BR>
+df13c-8p-125v<BR>
+df13c-9p-125v<BR>
+df13c-10p-125v<BR>
+df13c-11p-125v<BR>
+df13c-12p-125v<BR>
+df13c-14p-125v<BR>
+df13c-15p-125v<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Samtec FTSH series connectors <FONT color=#ffaaaa>(19/04/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_ftsh.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_ftsh.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_ftsh.jpg" align=center width=800><BR>
+<UL>
+ftsh-105-01-l-dv<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Phoenix Contact GMKDS series connectors <FONT color=#ffaaaa>(11/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_gmkds.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_gmkds.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_gmkds.jpg" align=center width=800><BR>
+<UL>
+gmkds_3/2-7,62 (2-way 7.62mm pitch terminal block, Phoenix MKDS series)<BR>
+gmkds_3/3-7,62 (3-way 7.62mm pitch terminal block, Phoenix MKDS series)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>JST PH series connectors <FONT color=#ffaaaa>(18/03/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_jst-ph.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_jst-ph.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_jst-ph.jpg" align=center width=800><BR>
+<UL>
+b2b-ph-kl<BR>
+b3b-ph-kl<BR>
+b4b-ph-kl<BR>
+b5b-ph-kl<BR>
+b6b-ph-kl<BR>
+b7b-ph-kl<BR>
+b8b-ph-kl<BR>
+b9b-ph-kl<BR>
+b10b-ph-kl<BR>
+b11b-ph-kl<BR>
+b12b-ph-kl<BR>
+b13b-ph-kl<BR>
+b14b-ph-kl<BR>
+b15b-ph-kl<BR>
+b16b-ph-kl<BR>
+s2b-ph-kl<BR>
+s2b-ph-sm4-tb<BR>
+s3b-ph-kl<BR>
+s3b-ph-sm4-tb<BR>
+s4b-ph-kl<BR>
+s4b-ph-sm4-tb<BR>
+s5b-ph-kl<BR>
+s5b-ph-sm4-tb<BR>
+s6b-ph-kl<BR>
+s6b-ph-sm4-tb<BR>
+s7b-ph-kl<BR>
+s7b-ph-sm4-tb<BR>
+s8b-ph-kl<BR>
+s8b-ph-sm4-tb<BR>
+s9b-ph-kl<BR>
+s9b-ph-sm4-tb<BR>
+s10b-ph-kl<BR>
+s10b-ph-sm4-tb<BR>
+s11b-ph-kl<BR>
+s11b-ph-sm4-tb<BR>
+s12b-ph-kl<BR>
+s12b-ph-sm4-tb<BR>
+s13b-ph-kl<BR>
+s13b-ph-sm4-tb<BR>
+s14b-ph-kl<BR>
+s14b-ph-sm4-tb<BR>
+s15b-ph-kl<BR>
+s15b-ph-sm4-tb<BR>
+s16b-ph-kl<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Molex KK100 series connectors <FONT color=#ffaaaa>(18/03/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_kk100.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_kk100.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_kk100.jpg" align=center width=800><BR>
+<UL>
+kk100_22-23-2021<BR>
+kk100_22-23-2031<BR>
+kk100_22-23-2041<BR>
+kk100_22-23-2051<BR>
+kk100_22-23-2061<BR>
+kk100_22-23-2071<BR>
+kk100_22-23-2081<BR>
+kk100_22-23-2091<BR>
+kk100_22-23-2101<BR>
+kk100_22-23-2111<BR>
+kk100_22-23-2121<BR>
+kk100_22-23-2131<BR>
+kk100_22-23-2141<BR>
+kk100_22-23-2151<BR>
+kk100_22-23-2161<BR>
+kk100_22-23-2171<BR>
+kk100_22-23-2181<BR>
+kk100_22-23-2191<BR>
+kk100_22-23-2201<BR>
+kk100_22-23-2211<BR>
+kk100_22-23-2221<BR>
+kk100_22-23-2231<BR>
+kk100_22-23-2241<BR>
+kk100_22-23-2251<BR>
+kk100_22-23-2261<BR>
+kk100_22-23-2271<BR>
+kk100_22-23-2281<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Molex KK156 series connectors <FONT color=#ffaaaa>(18/03/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_kk156.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_kk156.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_kk156.jpg" align=center width=800><BR>
+<UL>
+kk156_26-60-4020<BR>
+kk156_26-60-4030<BR>
+kk156_26-60-4040<BR>
+kk156_26-60-4050<BR>
+kk156_26-60-4060<BR>
+kk156_26-60-4070<BR>
+kk156_26-60-4080<BR>
+kk156_26-60-4090<BR>
+kk156_26-60-4100<BR>
+kk156_26-60-4110<BR>
+kk156_26-60-4120<BR>
+kk156_26-60-4130<BR>
+kk156_26-60-4140<BR>
+kk156_26-60-4150<BR>
+kk156_26-60-4160<BR>
+kk156_26-60-4170<BR>
+kk156_26-60-4180<BR>
+kk156_26-64-4020<BR>
+kk156_26-64-4030<BR>
+kk156_26-64-4040<BR>
+kk156_26-64-4050<BR>
+kk156_26-64-4060<BR>
+kk156_26-64-4070<BR>
+kk156_26-64-4080<BR>
+kk156_26-64-4090<BR>
+kk156_26-64-4100<BR>
+kk156_26-64-4110<BR>
+kk156_26-64-4120<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Various connectors <FONT color=#ffaaaa>(14/02/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_misc.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_misc.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_misc.jpg" align=center width=800><BR>
+<UL>
+6p4c (RJ series connector, 6p4c)<BR>
+6p6c (RJ series connector, 6p6c)<BR>
+8p8c (RJ series connector, 8p8c)<BR>
+arduino_header (footprint for the Arduino board)<BR>
+arduino_mega_header (footprint for the Arduino Mega/Due board)<BR>
+arduino_nano_header (footprint for the Arduino Nano board)<BR>
+arduino_pin_socket_8 (8 pin socket for Arduino shields)<BR>
+dc_socket (standard DC power jack)<BR>
+dc_socket_rh (Standard DC power jack, multiple round holes)<BR>
+microsd_socket (MicroSD Card socket, Molex P/N 502774-0811)<BR>
+molex_6p6c (RJ11 6p6c socket, Molex P/N 95009-7667)<BR>
+sd_socket (SD Card socket, 4UCOMP P/N 19607)<BR>
+stm32f0_discovery_header (footprint for the STM32 F0 Discovery board)<BR>
+stm32f3_discovery_header (footprint for the STM32 F3 Discovery board)<BR>
+stm32f4_discovery_header (footprint for the STM32 F4 Discovery board)<BR>
+stm32vl_discovery_header (footprint for the STM32 VL Discovery board)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Phoenix Contact MKDS series connectors <FONT color=#ffaaaa>(11/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_mkds.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_mkds.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_mkds.jpg" align=center width=800><BR>
+<UL>
+mkds_1,5/2 (2-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/3 (3-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/4 (4-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/5 (5-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/6 (6-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/7 (7-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/8 (8-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/9 (9-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/10 (10-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/11 (11-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/12 (12-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/13 (13-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/14 (14-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/15 (15-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+mkds_1,5/16 (16-way 5mm pitch terminal block, Phoenix MKDS series)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>AMP MODU series connectors <FONT color=#ffaaaa>(11/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_modu.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_modu.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_modu.jpg" align=center width=800><BR>
+<UL>
+amp-modu-2 (2 pin AMP MODU connector)<BR>
+amp-modu-4 (4 pin AMP MODU connector)<BR>
+amp-modu-6 (6 pin AMP MODU connector)<BR>
+amp-modu-8 (8 pin AMP MODU connector)<BR>
+amp-modu-9 (9 pin AMP MODU connector)<BR>
+amp-modu-10 (10 pin AMP MODU connector)<BR>
+amp-modu-12 (12 pin AMP MODU connector)<BR>
+amp-modu-15 (15 pin AMP MODU connector)<BR>
+amp-modu-22 (22 pin AMP MODU connector)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Phoenix Contact MPT series connectors <FONT color=#ffaaaa>(11/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_mpt.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_mpt.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_mpt.jpg" align=center width=800><BR>
+<UL>
+mpt_0,5/2-2,54 (2-way 2.54mm pitch terminal block, Phoenix MPT series)<BR>
+mpt_0,5/3-2,54 (3-way 2.54mm pitch terminal block, Phoenix MPT series)<BR>
+mpt_0,5/4-2,54 (4-way 2.54mm pitch terminal block, Phoenix MPT series)<BR>
+mpt_0,5/5-2,54 (5-way 2.54mm pitch terminal block, Phoenix MPT series)<BR>
+mpt_0,5/6-2,54 (6-way 2.54mm pitch terminal block, Phoenix MPT series)<BR>
+mpt_0,5/7-2,54 (7-way 2.54mm pitch terminal block, Phoenix MPT series)<BR>
+mpt_0,5/8-2,54 (8-way 2.54mm pitch terminal block, Phoenix MPT series)<BR>
+mpt_0,5/9-2,54 (9-way 2.54mm pitch terminal block, Phoenix MPT series)<BR>
+mpt_0,5/10-2,54 (10-way 2.54mm pitch terminal block, Phoenix MPT series)<BR>
+mpt_0,5/11-2,54 (11-way 2.54mm pitch terminal block, Phoenix MPT series)<BR>
+mpt_0,5/12-2,54 (12-way 2.54mm pitch terminal block, Phoenix MPT series)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Molex PanelMate series connectors <FONT color=#ffaaaa>(25/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_panelmate.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_panelmate.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_panelmate.jpg" align=center width=800><BR>
+<UL>
+panelmate_smd_2 (2-way Molex PanelMate connector)<BR>
+panelmate_smd_3 (3-way Molex PanelMate connector)<BR>
+panelmate_smd_4 (4-way Molex PanelMate connector)<BR>
+panelmate_smd_5 (5-way Molex PanelMate connector)<BR>
+panelmate_smd_6 (6-way Molex PanelMate connector)<BR>
+panelmate_smd_7 (7-way Molex PanelMate connector)<BR>
+panelmate_smd_8 (8-way Molex PanelMate connector)<BR>
+panelmate_smd_9 (9-way Molex PanelMate connector)<BR>
+panelmate_smd_10 (10-way Molex PanelMate connector)<BR>
+panelmate_smd_12 (12-way Molex PanelMate connector)<BR>
+panelmate_smd_14 (14-way Molex PanelMate connector)<BR>
+panelmate_smd_15 (15-way Molex PanelMate connector)<BR>
+panelmate_smd_18 (18-way Molex PanelMate connector)<BR>
+panelmate_smd_20 (20-way Molex PanelMate connector)<BR>
+panelmate_smd_30 (30-way Molex PanelMate connector)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>ITC various connectors <FONT color=#ffaaaa>(11/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_pc.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_pc.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_pc.jpg" align=center width=800><BR>
+<UL>
+conn_hdd_15-24-4441 (5.08mm Disk drive power connector, 90&deg;, Molex P/N 15-24-4441)<BR>
+conn_hdd_15-24-4449 (5.08mm Disk drive power connector, Molex P/N 15-24-4449)<BR>
+conn_usb_a (USB A-type receptacle - Tyco P/N 292303-3)<BR>
+conn_usb_ax2 (USB double A-type receptacle - Tyco P/N 5787617-3)<BR>
+conn_usb_a-vert (USB A-type vertical receptacle - Tyco P/N 440260-2)<BR>
+conn_usb_a-vert2 (USB A-type vertical receptacle - Lumberg P/N 2410-01)<BR>
+conn_usb_b (USB B-type receptacle - Lumberg P/N 2411-02)<BR>
+conn_usb_b-vert (USB B-type vertical receptacle - Molex series 67265)<BR>
+conn_usb_b_micro_smd (micro USB B-type SMD receptacle - Molex P/N 47346-0001)<BR>
+conn_usb_b_micro_smd-2 (micro USB B-type SMD receptacle with retention pins)<BR>
+conn_usb_b_mini_smd (mini USB B-type SMD receptacle)<BR>
+db-15-vga (15 poles D-SUB video receptacle - Tyco P/N 440467-1)<BR>
+dvi (DVI-I receptacle, Tyco P/N 1-1734147-1)<BR>
+pci-x_conn-x1 (PCI-X 1x card edge connector, FCI P/N 10018783-10x00x)<BR>
+pci-x_conn-x4 (PCI-X 4x card edge connector, FCI P/N 10018783-10x01x)<BR>
+pci-x_conn-x8 (PCI-X 8x card edge connector, FCI P/N 10018783-10x02x)<BR>
+pci-x_conn-x16 (PCI-X 16x card edge connector, FCI P/N 10018783-10x03x)<BR>
+pci-x_edge-x1 (PCI-X 1x card edge)<BR>
+pci-x_edge-x4 (PCI-X 4x card edge)<BR>
+pci-x_edge-x8 (PCI-X 8x card edge)<BR>
+pci-x_edge-x16 (PCI-X 16x card edge)<BR>
+pci_conn (PCI card edge connector, Molex P/N 48200-60xx)<BR>
+rj45-noshield (RJ45 unshielded connector)<BR>
+rj45-shield (RJ45 shielded connector)<BR>
+rj45-tyco-2-406549-7 (RJ45 connector with LEDs - Tyco P/N 2-406549-7)<BR>
+rj45-tyco-5-6605758-4 (RJ45 connector with LEDs - Tyco P/N 5-6605758-4)<BR>
+rj45-wiznet-rb1-125bag1a (RJ45 connector with LEDs - Wiznet P/N RB1-125BAG1A)<BR>
+rj45_wurth-7499211122a (RJ45 connector with LEDs, 10/100BaseT mag + PoE - Wurth P/N 7499211122A)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Phoenix Contact PT-1,5 series connectors <FONT color=#ffaaaa>(11/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_pt-1,5.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_pt-1,5.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_pt-1,5.jpg" align=center width=800><BR>
+<UL>
+pt_1,5/2-3,5-h (2-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/3-3,5-h (3-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/4-3,5-h (4-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/5-3,5-h (5-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/6-3,5-h (6-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/7-3,5-h (7-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/8-3,5-h (8-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/9-3,5-h (9-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/10-3,5-h (10-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/11-3,5-h (11-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/12-3,5-h (12-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/13-3,5-h (13-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/14-3,5-h (14-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/15-3,5-h (15-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+pt_1,5/16-3,5-h (16-way 3.5mm pitch terminal block, Phoenix PT-1,5 series)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>RF connectors <FONT color=#ffaaaa>(11/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_rf.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_rf.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_rf.jpg" align=center width=800><BR>
+<UL>
+bnc_90_1-1337543-0 (BNC connector, right angle, Tyco P/N 1-1337543-0)<BR>
+bnc_straight_1-1337541-0 (BNC connector, straight, Tyco P/N 1-1337541-0)<BR>
+coaxial_u.fl-r-smt-1 (Ultra small surface mount coaxial connector, Hirose P/N U.FL-R-SMT-1)<BR>
+lemo_epb00250ntn (LEMO connector, P/N EPB.00.250.NTN)<BR>
+sma_90_r300.124.403 (SMA female connector, reverse polarity, right angle, Radiall P/N R300.124.403)<BR>
+sma_smd_73251-135x (SMA SMD female connector, straight, Molex P/N 73251-135x)<BR>
+sma_straight_32k101-400l5 (SMA female connector, straight, Rosenberger 32K101-400L5)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Screw connectors <FONT color=#ffaaaa>(11/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_screw.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_screw.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_screw.jpg" align=center width=800><BR>
+<UL>
+mors_2p (2-way terminal block)<BR>
+mors_3p (3-way terminal block)<BR>
+mors_4p (4-way terminal block)<BR>
+mors_5p (5-way terminal block)<BR>
+mors_6p (6-way terminal block)<BR>
+mors_7p (7-way terminal block)<BR>
+mors_8p (8-way terminal block)<BR>
+mors_9p (9-way terminal block)<BR>
+mors_10p (10-way terminal block)<BR>
+mors_11p (11-way terminal block)<BR>
+mors_12p (12-way terminal block)<BR>
+mors_13p (13-way terminal block)<BR>
+mors_14p (14-way terminal block)<BR>
+mors_15p (15-way terminal block)<BR>
+mors_16p (16-way terminal block)<BR>
+mors_17p (17-way terminal block)<BR>
+mors_18p (18-way terminal block)<BR>
+mors_19p (19-way terminal block)<BR>
+mors_20p (20-way terminal block)<BR>
+mstba 2,5/2-g-5,08 (2-way terminal block socket, Phoenix MSTBA 2,5/2-G-5,08)<BR>
+mstba 2,5/3-g-5,08 (3-way terminal block socket, Phoenix MSTBA 2,5/3-G-5,08)<BR>
+mstba 2,5/4-g-5,08 (4-way terminal block socket, Phoenix MSTBA 2,5/4-G-5,08)<BR>
+mstba 2,5/5-g-5,08 (5-way terminal block socket, Phoenix MSTBA 2,5/5-G-5,08)<BR>
+mstba 2,5/6-g-5,08 (6-way terminal block socket, Phoenix MSTBA 2,5/6-G-5,08)<BR>
+mstba 2,5/7-g-5,08 (7-way terminal block socket, Phoenix MSTBA 2,5/7-G-5,08)<BR>
+mstba 2,5/8-g-5,08 (8-way terminal block socket, Phoenix MSTBA 2,5/8-G-5,08)<BR>
+mstba 2,5/9-g-5,08 (9-way terminal block socket, Phoenix MSTBA 2,5/9-G-5,08)<BR>
+mstba 2,5/10-g-5,08 (10-way terminal block socket, Phoenix MSTBA 2,5/10-G-5,08)<BR>
+mstba 2,5/11-g-5,08 (11-way terminal block socket, Phoenix MSTBA 2,5/11-G-5,08)<BR>
+mstba 2,5/12-g-5,08 (12-way terminal block socket, Phoenix MSTBA 2,5/12-G-5,08)<BR>
+mstbva 2,5/2-g-5,08 (2-way terminal block socket, Phoenix MSTBVA 2,5/2-G-5,08)<BR>
+mstbva 2,5/3-g-5,08 (3-way terminal block socket, Phoenix MSTBVA 2,5/3-G-5,08)<BR>
+mstbva 2,5/4-g-5,08 (4-way terminal block socket, Phoenix MSTBVA 2,5/4-G-5,08)<BR>
+mstbva 2,5/5-g-5,08 (5-way terminal block socket, Phoenix MSTBVA 2,5/5-G-5,08)<BR>
+mstbva 2,5/6-g-5,08 (6-way terminal block socket, Phoenix MSTBVA 2,5/6-G-5,08)<BR>
+mstbva 2,5/7-g-5,08 (7-way terminal block socket, Phoenix MSTBVA 2,5/7-G-5,08)<BR>
+mstbva 2,5/8-g-5,08 (8-way terminal block socket, Phoenix MSTBVA 2,5/8-G-5,08)<BR>
+mstbva 2,5/9-g-5,08 (9-way terminal block socket, Phoenix MSTBVA 2,5/9-G-5,08)<BR>
+mstbva 2,5/10-g-5,08 (10-way terminal block socket, Phoenix MSTBVA 2,5/10-G-5,08)<BR>
+mstbva 2,5/11-g-5,08 (11-way terminal block socket, Phoenix MSTBVA 2,5/11-G-5,08)<BR>
+mstbva 2,5/12-g-5,08 (12-way terminal block socket, Phoenix MSTBVA 2,5/12-G-5,08)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Box header connectors <FONT color=#ffaaaa>(17/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_conn_strip.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_conn_strip.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_conn_strip.jpg" align=center width=800><BR>
+<UL>
+vasch_strip_3x2 (box header connector, 6 pin)<BR>
+vasch_strip_4x2 (box header connector, 8 pin)<BR>
+vasch_strip_5x2 (box header connector, 10 pin)<BR>
+vasch_strip_6x2 (box header connector, 12 pin)<BR>
+vasch_strip_7x2 (box header connector, 14 pin)<BR>
+vasch_strip_8x2 (box header connector, 16 pin)<BR>
+vasch_strip_9x2 (box header connector, 18 pin)<BR>
+vasch_strip_10x2 (box header connector, 20 pin)<BR>
+vasch_strip_12x2 (box header connector, 24 pin)<BR>
+vasch_strip_13x2 (box header connector, 26 pin)<BR>
+vasch_strip_15x2 (box header connector, 30 pin)<BR>
+vasch_strip_16x2 (box header connector, 32 pin)<BR>
+vasch_strip_17x2 (box header connector, 34 pin)<BR>
+vasch_strip_18x2 (box header connector, 36 pin)<BR>
+vasch_strip_20x2 (box header connector, 40 pin)<BR>
+vasch_strip_25x2 (box header connector, 50 pin)<BR>
+vasch_strip_30x2 (box header connector, 60 pin)<BR>
+vasch_strip_32x2 (box header connector, 64 pin)<BR>
+vasch_strip_3x2_90 (90° box header connector, 6 pin)<BR>
+vasch_strip_4x2_90 (90° box header connector, 8 pin)<BR>
+vasch_strip_5x2_90 (90° box header connector, 10 pin)<BR>
+vasch_strip_6x2_90 (90° box header connector, 12 pin)<BR>
+vasch_strip_7x2_90 (90° box header connector, 14 pin)<BR>
+vasch_strip_8x2_90 (90° box header connector, 16 pin)<BR>
+vasch_strip_9x2_90 (90° box header connector, 18 pin)<BR>
+vasch_strip_10x2_90 (90° box header connector, 20 pin)<BR>
+vasch_strip_12x2_90 (90° box header connector, 24 pin)<BR>
+vasch_strip_13x2_90 (90° box header connector, 26 pin)<BR>
+vasch_strip_15x2_90 (90° box header connector, 30 pin)<BR>
+vasch_strip_16x2_90 (90° box header connector, 32 pin)<BR>
+vasch_strip_17x2_90 (90° box header connector, 34 pin)<BR>
+vasch_strip_18x2_90 (90° box header connector, 36 pin)<BR>
+vasch_strip_20x2_90 (90° box header connector, 40 pin)<BR>
+vasch_strip_25x2_90 (90° box header connector, 50 pin)<BR>
+vasch_strip_30x2_90 (90° box header connector, 60 pin)<BR>
+vasch_strip_32x2_90 (90° box header connector, 64 pin)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Crystals, resonators etc... <FONT color=#ffaaaa>(18/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_crystal.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_crystal.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_crystal.jpg" align=center width=800><BR>
+<UL>
+crystal_fa128 (FA-128 type SMD crystal)<BR>
+crystal_hc-49/smd (HC-49 SMD crystal package)<BR>
+crystal_hc-49s (HC-49S crystal package)<BR>
+crystal_hc-49u (vertical HC-49U crystal package)<BR>
+crystal_hc-49u_horiz (horizontal HC-49U crystal package)<BR>
+crystal_smd_5x3.2mm (5x3.2mm SMD crystal)<BR>
+crystal_smd_ma-406 (Epson MA-406 SMD crystal)<BR>
+crystal_smd_ma-505 (Epson MA-505 SMD crystal)<BR>
+crystal_smd_ma-506 (Epson MA-506 SMD crystal)<BR>
+crystal_tc-26 (vertical TC-26, 2x6mm crystal package)<BR>
+crystal_tc-26_horiz (horizontal TC-26, 2x6mm crystal package)<BR>
+crystal_tc-38 (vertical TC-38, 3x8mm crystal package)<BR>
+crystal_tc-38_horiz (horizontal TC-38, 3x8mm crystal package)<BR>
+crystal_xrcgb (Murata XRCGB SMD Crystal)<BR>
+resonator_awscr (Abracon AWSCR SMD Resonator)<BR>
+resonator_sip3 (SIP3 ceramic resonator)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Mechanical details <FONT color=#ffaaaa>(18/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_details.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_details.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_details.jpg" align=center width=800><BR>
+<UL>
+3-way_bridge_0603 (3-way solder jumpers/0603 SMD resistors for settings)<BR>
+4-way_bridge_0603 (4-way solder jumpers/0603 SMD resistors for settings)<BR>
+6-way_bridge_0603 (6-way solder jumpers/0603 SMD resistors for settings)<BR>
+fiducial_075_300_round (fiducial mark, 0.75mm round pad + 3mm round solder clearance)<BR>
+fiducial_075_300_square (fiducial mark, 0.75mm round pad + 3mm square solder clearance)<BR>
+fiducial_100_200_round (fiducial mark, 1mm round pad + 2mm round solder clearance)<BR>
+fiducial_100_200_square (fiducial mark, 1mm round pad + 2mm square solder clearance)<BR>
+fiducial_100_300_round (fiducial mark, 1mm round pad + 3mm round solder clearance)<BR>
+fiducial_100_300_square (fiducial mark, 1mm round pad + 3mm square solder clearance)<BR>
+hole_1mm (thru hole dia=1mm)<BR>
+hole_1mm5 (thru hole dia=1.5mm)<BR>
+hole_2mm (thru hole dia=2mm)<BR>
+hole_2mm5 (thru hole dia=2.5mm)<BR>
+hole_3mm (thru hole dia=3mm)<BR>
+hole_3mm5 (thru hole dia=3.5mm)<BR>
+hole_4mm (thru hole dia=4mm)<BR>
+hole_4mm5 (thru hole dia=4.5mm)<BR>
+hole_5mm (thru hole dia=5mm)<BR>
+hole_5mm5 (thru hole dia=5.5mm)<BR>
+hole_6mm (thru hole dia=6mm)<BR>
+hole_6mm5 (thru hole dia=6.5mm)<BR>
+hole_7mm (thru hole dia=7mm)<BR>
+hole_7mm5 (thru hole dia=7.5mm)<BR>
+hole_8mm (thru hole dia=8mm)<BR>
+hole_8mm5 (thru hole dia=8.5mm)<BR>
+hole_9mm (thru hole dia=9mm)<BR>
+hole_9mm5 (thru hole dia=9.5mm)<BR>
+hole_10mm (thru hole dia=10mm)<BR>
+hs_11cw_to220 (11&deg;C/W TO220 heatsink - Aavid extrusion 0S172 series)<BR>
+hs_14cw_to220 (14&deg;C/W TO220 heatsink - Aavid extrusion 0S172 series)<BR>
+hs_5770 (Aavid 5770 type heatsink, 32&deg;C/W)<BR>
+hs_5771 (Aavid 5771 type heatsink, 25.9&deg;C/W)<BR>
+hs_5772 (Aavid 5772 type heatsink, 24.4&deg;C/W)<BR>
+hs_5901 (Aavid 5901 type heatsink, 10&deg;C/W)<BR>
+hs_5903 (Aavid 5903 type heatsink, 11.2&deg;C/W)<BR>
+pad_2mm (thru hole pad, dia=2mm)<BR>
+pad_3mm (thru hole pad, dia=3mm)<BR>
+testpoint_1mm (mono layer testpoint, dia=1mm)<BR>
+testpoint_1mm5 (mono layer testpoint, dia=1.5mm)<BR>
+testpoint_2mm (mono layer testpoint, dia=2mm)<BR>
+testpoint_2mm5 (mono layer testpoint, dia=2.5mm)<BR>
+vite_2mm5 (2,5mm screw with 5mm head)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>LEDs, displays and indicators <FONT color=#ffaaaa>(14/02/2015)</FONT> - <A href="/kicad_libs/modules/mod_indicators.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_indicators.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_indicators.jpg" align=center width=800><BR>
+<UL>
+7segdisp (7seg display type MAN, HC, etc...)<BR>
+7segdisp_acda02 (dual SMD 7seg display, Kingbright ACDA02 series)<BR>
+7segdisp_hdsp (high density 7seg display, HDSP series)<BR>
+7segdisp_sa05 (7seg display, Kingbright SA05 series)<BR>
+7segdisp_sa50 (5" 7seg display, Kingbright SA50 series)<BR>
+7segdisp_sa52 (7seg display, Kingbright SA52 series)<BR>
+dotdisp_cmd557xx00 (7x5 dot-matrix display, US Electronics CMD-557x series)<BR>
+led_3mm_clear (3mm (T-1) clear LED)<BR>
+led_3mm_green (3mm (T-1) green LED)<BR>
+led_3mm_red (3mm (T-1) red LED)<BR>
+led_3mm_yellow (3mm (T-1) yellow LED)<BR>
+led_5mm_clear (5mm (T-1 3/4) clear LED)<BR>
+led_5mm_green (5mm (T-1 3/4) green LED)<BR>
+led_5mm_red (5mm (T-1 3/4) red LED)<BR>
+led_5mm_yellow (5mm (T-1 3/4) yellow LED)<BR>
+led_10mm_clear (10mm (T-3) clear LED)<BR>
+led_10mm_green (10mm (T-3) green LED)<BR>
+led_10mm_red (10mm (T-3) red LED)<BR>
+led_10mm_yellow (10mm (T-3) yellow LED)<BR>
+lcd_16x2 (standard 16x2 LCD display with 0.4" spacers)<BR>
+lcd_16x2_nmtc-s16205dfyhsay (LCD Module, 16x2, Microtips NMTC-S16205DFYHSAY)<BR>
+lcd_20x4 (standard 20x4 LCD display with 0.4" spacers)<BR>
+lcd_g-128x64 (graphic 128x64 LCD display with 0.4" spacers)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Logo library <FONT color=#ffaaaa>(27/10/2013)</FONT> - <A href="/kicad_libs/modules/mod_logo.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_logo.jpg" align=center width=800><BR>
+<UL>
+Logo_copper_CC-BY-NC-SA_5x2mm (CC BY-NC-SA logo, 5x2mm, front copper side)<BR>
+Logo_copper_CC-BY-NC-SA_10x3.6mm (CC BY-NC-SA logo, 10x3.6mm, front copper side)<BR>
+Logo_copper_CC-BY-SA_5x2mm (CC BY-SA logo, 5x2mm, front copper side)<BR>
+Logo_copper_CC-BY-SA_10x4.5mm (CC BY-NC-SA logo, 10x4.5mm, front copper side)<BR>
+Logo_copper_CE_5x3.6mm (CE logo, 5x3.6mm, front copper side)<BR>
+Logo_copper_CE_10x7.2mm (CE logo, 10x7.2mm, front copper side)<BR>
+Logo_copper_high_voltage_5x4.2mm (High voltage logo, 5x4.2mm, front copper side)<BR>
+Logo_copper_high_voltage_10x8.5mm (High voltage logo, 10x8.5mm, front copper side)<BR>
+Logo_copper_Lead-Free_5x5mm (Lead Free logo, 5x5mm, front copper side)<BR>
+Logo_copper_Lead-Free_10x10mm (Lead Free logo, 10x10mm, front copper side)<BR>
+Logo_copper_OSHW_6x6mm (Open Hardware Logo, 6x6mm, front copper side)<BR>
+Logo_copper_OSHW_12x13mm (Open Hardware Logo, 12x13mm, front copper side)<BR>
+Logo_copper_polarity_center_5x1.4mm (Polarity logo, positive center, 5x1.4mm, front copper side)<BR>
+Logo_copper_polarity_center_10x2.8mm (Polarity logo, positive center, 10x2.8mm, front copper side)<BR>
+Logo_copper_polarity_external_5x1.4mm (Polarity logo, negative center, 5x1.4mm, front copper side)<BR>
+Logo_copper_polarity_external_10x2.8mm (Polarity logo, negative center, 10x2.8mm, front copper side)<BR>
+Logo_copper_ROHS_5x2.8mm (ROHS logo, 5x2.8mm, front copper side)<BR>
+Logo_copper_ROHS_10x5.6mm (ROHS logo, 10x5.6mm, front copper side)<BR>
+Logo_copper_UR-C-US_5x2mm (UL Recognized C+US logo, 5x2mm, front copper side)<BR>
+Logo_copper_UR-C-US_10x4mm (UL Recognized C+US logo, 10x4mm, front copper side)<BR>
+Logo_copper_UR-C_5x2.5mm (UL Recognized C logo, 5x2.5mm, front copper side)<BR>
+Logo_copper_UR-C_10x4.5mm (UL Recognized C logo, 10x4.5mm, front copper side)<BR>
+Logo_copper_UR-US_5x2mm (UL Recognized US logo, 5x2mm, front copper side)<BR>
+Logo_copper_UR-US_10x4mm (UL Recognized US logo, 10x4mm, front copper side)<BR>
+Logo_copper_UR_5x3mm (UL Recognized logo, 5x3mm, front copper side)<BR>
+Logo_copper_UR_10x5.6mm (UL Recognized logo, 10x5.6mm, front copper side)<BR>
+Logo_copper_warning_5x4.2mm (Warning logo, 5x4.2mm, front copper side)<BR>
+Logo_copper_warning_10x8.5mm (Warning logo, 10x8.5mm, front copper side)<BR>
+Logo_copper_WEEE_3.4x5mm (WEEE logo, 3.4x5mm, front copper side)<BR>
+Logo_copper_WEEE_8x10mm (WEEE logo, 8x10mm, front copper side)<BR>
+Logo_silk_CC-BY-NC-SA_5x2mm (CC BY-NC-SA logo, 5x2mm, front silkscreen side)<BR>
+Logo_silk_CC-BY-NC-SA_10x3.6mm (CC BY-NC-SA logo, 10x3.6mm, front silkscreen side)<BR>
+Logo_silk_CC-BY-SA_5x2mm (CC BY-SA logo, 5x2mm, front silkscreen side)<BR>
+Logo_silk_CC-BY-SA_10x4.5mm (CC BY-NC-SA logo, 10x4.5mm, front silkscreen side)<BR>
+Logo_silk_CE_5x3.6mm (CE logo, 5x3.6mm, front silkscreen side)<BR>
+Logo_silk_CE_10x7.2mm (CE logo, 10x7.2mm, front silkscreen side)<BR>
+Logo_silk_high_voltage_5x4.2mm (High voltage logo, 5x4.2mm, front silkscreen side)<BR>
+Logo_silk_high_voltage_10x8.5mm (High voltage logo, 10x8.5mm, front silkscreen side)<BR>
+Logo_silk_Lead-Free_5x5mm (Lead Free logo, 5x5mm, front silkscreen side)<BR>
+Logo_silk_Lead-Free_10x10mm (Lead Free logo, 10x10mm, front silkscreen side)<BR>
+Logo_silk_OSHW_6x6mm (Open Hardware Logo, 6x6mm, front silkscreen side)<BR>
+Logo_silk_OSHW_12x13mm (Open Hardware Logo, 12x13mm, front silkscreen side)<BR>
+Logo_silk_polarity_center_5x1.4mm (Polarity logo, positive center, 5x1.4mm, front silkscreen side)<BR>
+Logo_silk_polarity_center_10x2.8mm (Polarity logo, positive center, 10x2.8mm, front silkscreen side)<BR>
+Logo_silk_polarity_external_5x1.4mm (Polarity logo, negative center, 5x1.4mm, front silkscreen side)<BR>
+Logo_silk_polarity_external_10x2.8mm (Polarity logo, negative center, 10x2.8mm, front silkscreen side)<BR>
+Logo_silk_ROHS_5x2.8mm (ROHS logo, 5x2.8mm, front silkscreen side)<BR>
+Logo_silk_ROHS_10x5.6mm (ROHS logo, 10x5.6mm, front silkscreen side)<BR>
+Logo_silk_UR-C-US_5x2mm (UL Recognized C+US logo, 5x2mm, front silkscreen side)<BR>
+Logo_silk_UR-C-US_10x4mm (UL Recognized C+US logo, 10x4mm, front silkscreen side)<BR>
+Logo_silk_UR-C_5x2.5mm (UL Recognized C logo, 5x2.5mm, front silkscreen side)<BR>
+Logo_silk_UR-C_10x4.5mm (UL Recognized C logo, 10x4.5mm, front silkscreen side)<BR>
+Logo_silk_UR-US_5x2mm (UL Recognized US logo, 5x2mm, front silkscreen side)<BR>
+Logo_silk_UR-US_10x4mm (UL Recognized US logo, 10x4mm, front silkscreen side)<BR>
+Logo_silk_UR_5x3mm (UL Recognized logo, 5x3mm, front silkscreen side)<BR>
+Logo_silk_UR_10x5.6mm (UL Recognized logo, 10x5.6mm, front silkscreen side)<BR>
+Logo_silk_warning_5x4.2mm (Warning logo, 5x4.2mm, front silkscreen side)<BR>
+Logo_silk_warning_10x8.5mm (Warning logo, 10x8.5mm, front silkscreen side)<BR>
+Logo_silk_WEEE_3.4x5mm (WEEE logo, 3.4x5mm, front silkscreen side)<BR>
+Logo_silk_WEEE_8x10mm (WEEE logo, 8x10mm, front silkscreen side)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Various components <FONT color=#ffaaaa>(18/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_misc_comp.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_misc_comp.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_misc_comp.jpg" align=center width=800><BR>
+<UL>
+buzzer_sg13j12 (buzzer Kingstate SG13J12)<BR>
+buzzer_tmb (TMB buzzer)<BR>
+encoder_alps-ec12d (12mm rotary encoder with pushbutton, Alps EC12D)<BR>
+encoder_alps-ec12e (12mm rotary encoder, Alps EC12E)<BR>
+fuse_holder_cq-200c (5x20 fuse holder)<BR>
+fuse_smf (Littelfuse SMF fuse holder)<BR>
+inductor_1400_24,4x14_p23,6 (Murata 1400 series power inductor, 24,4x14mm p23,6)<BR>
+inductor_1400_24,4x18,5_p23,5 (Murata 1400 series power inductor, 24,4x18,5mm p23,5)<BR>
+inductor_8mm-p5 (vertical inductor dia.8mm pitch 5mm)<BR>
+trafo_ei38 (PCB transformer, EI 38 type)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Various RF components <FONT color=#ffaaaa>(18/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_misc_rf.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_misc_rf.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_misc_rf.jpg" align=center width=800><BR>
+<UL>
+antenna_49487 (Molex SMD antenna 49487)<BR>
+antenna_flavus (Antenova Flavus GSM Snap-In antenna)<BR>
+antenna_rufa_a5839 (Antenova Rufa SMD antenna, A5839)<BR>
+antenna_rufa_a5887 (Antenova Rufa SMD antenna, A5887)<BR>
+balun_2450bm15 (Johanson Technology Balun-Filter for TI CC253X, CC254X, CC257X, CC853X, CC852X)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>PGA ICs<FONT color=#ffaaaa>(18/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_pga.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_pga.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_pga.jpg" align=center width=800><BR>
+<UL>
+CPGA-132<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Standard pin strips <FONT color=#ffaaaa>(6/04/2015)</FONT> - <A href="/kicad_libs/modules/mod_pin_strip.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_pin_strip.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_pin_strip.jpg" align=center width=800><BR>
+<UL>
+pin_socket_1 (1-way pin socket)<BR>
+pin_socket_2 (2-way pin socket)<BR>
+pin_socket_2x2 (2x2-way pin socket)<BR>
+pin_socket_2x2-90 (90 deg. 2x2-way pin socket)<BR>
+pin_socket_3 (3-way pin socket)<BR>
+pin_socket_3x2 (3x2-way pin socket)<BR>
+pin_socket_3x2-90 (90 deg. 3x2-way pin socket)<BR>
+pin_socket_4 (4-way pin socket)<BR>
+pin_socket_4x2 (4x2-way pin socket)<BR>
+pin_socket_4x2-90 (90 deg. 4x2-way pin socket)<BR>
+pin_socket_5 (5-way pin socket)<BR>
+pin_socket_5x2 (5x2-way pin socket)<BR>
+pin_socket_5x2-90 (90 deg. 5x2-way pin socket)<BR>
+pin_socket_6 (6-way pin socket)<BR>
+pin_socket_6x2 (6x2-way pin socket)<BR>
+pin_socket_6x2-90 (90 deg. 6x2-way pin socket)<BR>
+pin_socket_7 (7-way pin socket)<BR>
+pin_socket_7x2 (7x2-way pin socket)<BR>
+pin_socket_7x2-90 (90 deg. 7x2-way pin socket)<BR>
+pin_socket_8 (8-way pin socket)<BR>
+pin_socket_8x2 (8x2-way pin socket)<BR>
+pin_socket_8x2-90 (90 deg. 8x2-way pin socket)<BR>
+pin_socket_9 (9-way pin socket)<BR>
+pin_socket_9x2 (9x2-way pin socket)<BR>
+pin_socket_9x2-90 (90 deg. 9x2-way pin socket)<BR>
+pin_socket_10 (10-way pin socket)<BR>
+pin_socket_10x2 (10x2-way pin socket)<BR>
+pin_socket_10x2-90 (90 deg. 10x2-way pin socket)<BR>
+pin_socket_11 (11-way pin socket)<BR>
+pin_socket_11x2 (11x2-way pin socket)<BR>
+pin_socket_11x2-90 (90 deg. 11x2-way pin socket)<BR>
+pin_socket_12 (12-way pin socket)<BR>
+pin_socket_12x2 (12x2-way pin socket)<BR>
+pin_socket_12x2-90 (90 deg. 12x2-way pin socket)<BR>
+pin_socket_13 (13-way pin socket)<BR>
+pin_socket_13x2 (13x2-way pin socket)<BR>
+pin_socket_13x2-90 (90 deg. 13x2-way pin socket)<BR>
+pin_socket_14 (14-way pin socket)<BR>
+pin_socket_14x2 (14x2-way pin socket)<BR>
+pin_socket_14x2-90 (90 deg. 14x2-way pin socket)<BR>
+pin_socket_15 (15-way pin socket)<BR>
+pin_socket_15x2 (15x2-way pin socket)<BR>
+pin_socket_15x2-90 (90 deg. 15x2-way pin socket)<BR>
+pin_socket_16 (16-way pin socket)<BR>
+pin_socket_16x2 (16x2-way pin socket)<BR>
+pin_socket_16x2-90 (90 deg. 16x2-way pin socket)<BR>
+pin_socket_17 (17-way pin socket)<BR>
+pin_socket_17x2 (17x2-way pin socket)<BR>
+pin_socket_17x2-90 (90 deg. 17x2-way pin socket)<BR>
+pin_socket_18 (18-way pin socket)<BR>
+pin_socket_18x2 (18x2-way pin socket)<BR>
+pin_socket_18x2-90 (90 deg. 18x2-way pin socket)<BR>
+pin_socket_19 (19-way pin socket)<BR>
+pin_socket_19x2 (19x2-way pin socket)<BR>
+pin_socket_19x2-90 (90 deg. 19x2-way pin socket)<BR>
+pin_socket_20 (20-way pin socket)<BR>
+pin_socket_20x2 (20x2-way pin socket)<BR>
+pin_socket_20x2-90 (90 deg. 20x2-way pin socket)<BR>
+pin_socket_2mm_1 (1-way pin socket)<BR>
+pin_socket_2mm_2 (2-way pin socket)<BR>
+pin_socket_2mm_2x2 (2x2-way pin socket)<BR>
+pin_socket_2mm_3 (3-way pin socket)<BR>
+pin_socket_2mm_3x2 (3x2-way pin socket)<BR>
+pin_socket_2mm_4 (4-way pin socket)<BR>
+pin_socket_2mm_4x2 (4x2-way pin socket)<BR>
+pin_socket_2mm_5 (5-way pin socket)<BR>
+pin_socket_2mm_5x2 (5x2-way pin socket)<BR>
+pin_socket_2mm_6 (6-way pin socket)<BR>
+pin_socket_2mm_6x2 (6x2-way pin socket)<BR>
+pin_socket_2mm_7 (7-way pin socket)<BR>
+pin_socket_2mm_7x2 (7x2-way pin socket)<BR>
+pin_socket_2mm_8 (8-way pin socket)<BR>
+pin_socket_2mm_8x2 (8x2-way pin socket)<BR>
+pin_socket_2mm_9 (9-way pin socket)<BR>
+pin_socket_2mm_9x2 (9x2-way pin socket)<BR>
+pin_socket_2mm_10 (10-way pin socket)<BR>
+pin_socket_2mm_10x2 (10x2-way pin socket)<BR>
+pin_socket_2mm_11 (11-way pin socket)<BR>
+pin_socket_2mm_11x2 (11x2-way pin socket)<BR>
+pin_socket_2mm_12 (12-way pin socket)<BR>
+pin_socket_2mm_12x2 (12x2-way pin socket)<BR>
+pin_socket_2mm_13 (13-way pin socket)<BR>
+pin_socket_2mm_13x2 (13x2-way pin socket)<BR>
+pin_socket_2mm_14 (14-way pin socket)<BR>
+pin_socket_2mm_14x2 (14x2-way pin socket)<BR>
+pin_socket_2mm_15 (15-way pin socket)<BR>
+pin_socket_2mm_15x2 (15x2-way pin socket)<BR>
+pin_socket_2mm_16 (16-way pin socket)<BR>
+pin_socket_2mm_16x2 (16x2-way pin socket)<BR>
+pin_socket_2mm_17 (17-way pin socket)<BR>
+pin_socket_2mm_17x2 (17x2-way pin socket)<BR>
+pin_socket_2mm_18 (18-way pin socket)<BR>
+pin_socket_2mm_18x2 (18x2-way pin socket)<BR>
+pin_socket_2mm_19 (19-way pin socket)<BR>
+pin_socket_2mm_19x2 (19x2-way pin socket)<BR>
+pin_socket_2mm_20 (20-way pin socket)<BR>
+pin_socket_2mm_20x2 (20x2-way pin socket)<BR>
+pin_socket_2mm_21 (21-way pin socket)<BR>
+pin_socket_2mm_21x2 (21x2-way pin socket)<BR>
+pin_socket_2mm_22 (22-way pin socket)<BR>
+pin_socket_2mm_22x2 (22x2-way pin socket)<BR>
+pin_socket_2mm_23 (23-way pin socket)<BR>
+pin_socket_2mm_23x2 (23x2-way pin socket)<BR>
+pin_socket_2mm_24 (24-way pin socket)<BR>
+pin_socket_2mm_24x2 (24x2-way pin socket)<BR>
+pin_socket_2mm_25 (25-way pin socket)<BR>
+pin_socket_2mm_25x2 (25x2-way pin socket)<BR>
+pin_socket_2mm_26 (26-way pin socket)<BR>
+pin_socket_2mm_26x2 (26x2-way pin socket)<BR>
+pin_socket_2mm_27 (27-way pin socket)<BR>
+pin_socket_2mm_27x2 (27x2-way pin socket)<BR>
+pin_socket_2mm_28 (28-way pin socket)<BR>
+pin_socket_2mm_28x2 (28x2-way pin socket)<BR>
+pin_socket_2mm_29 (29-way pin socket)<BR>
+pin_socket_2mm_29x2 (29x2-way pin socket)<BR>
+pin_socket_2mm_30 (30-way pin socket)<BR>
+pin_socket_2mm_30x2 (30x2-way pin socket)<BR>
+pin_socket_2mm_31 (31-way pin socket)<BR>
+pin_socket_2mm_31x2 (31x2-way pin socket)<BR>
+pin_socket_2mm_32 (32-way pin socket)<BR>
+pin_socket_2mm_32x2 (32x2-way pin socket)<BR>
+pin_socket_2mm_33 (33-way pin socket)<BR>
+pin_socket_2mm_33x2 (33x2-way pin socket)<BR>
+pin_socket_2mm_34 (34-way pin socket)<BR>
+pin_socket_2mm_34x2 (34x2-way pin socket)<BR>
+pin_socket_2mm_35 (35-way pin socket)<BR>
+pin_socket_2mm_35x2 (35x2-way pin socket)<BR>
+pin_socket_2mm_36 (36-way pin socket)<BR>
+pin_socket_2mm_36x2 (36x2-way pin socket)<BR>
+pin_socket_2mm_37 (37-way pin socket)<BR>
+pin_socket_2mm_37x2 (37x2-way pin socket)<BR>
+pin_socket_2mm_38 (38-way pin socket)<BR>
+pin_socket_2mm_38x2 (38x2-way pin socket)<BR>
+pin_socket_2mm_39 (39-way pin socket)<BR>
+pin_socket_2mm_39x2 (39x2-way pin socket)<BR>
+pin_socket_2mm_40 (40-way pin socket)<BR>
+pin_socket_2mm_40x2 (40x2-way pin socket)<BR>
+pin_socket_2mm_41 (41-way pin socket)<BR>
+pin_socket_2mm_41x2 (41x2-way pin socket)<BR>
+pin_socket_2mm_42 (42-way pin socket)<BR>
+pin_socket_2mm_42x2 (42x2-way pin socket)<BR>
+pin_socket_2mm_43 (43-way pin socket)<BR>
+pin_socket_2mm_43x2 (43x2-way pin socket)<BR>
+pin_socket_2mm_44 (44-way pin socket)<BR>
+pin_socket_2mm_44x2 (44x2-way pin socket)<BR>
+pin_socket_2mm_45 (45-way pin socket)<BR>
+pin_socket_2mm_45x2 (45x2-way pin socket)<BR>
+pin_socket_2mm_46 (46-way pin socket)<BR>
+pin_socket_2mm_46x2 (46x2-way pin socket)<BR>
+pin_socket_2mm_47 (47-way pin socket)<BR>
+pin_socket_2mm_47x2 (47x2-way pin socket)<BR>
+pin_socket_2mm_48 (48-way pin socket)<BR>
+pin_socket_2mm_48x2 (48x2-way pin socket)<BR>
+pin_socket_2mm_49 (49-way pin socket)<BR>
+pin_socket_2mm_49x2 (49x2-way pin socket)<BR>
+pin_socket_2mm_50 (50-way pin socket)<BR>
+pin_socket_2mm_50x2 (50x2-way pin socket)<BR>
+pin_strip_1 (1-way pin strip)<BR>
+pin_strip_1-90 (90 deg. 1-way pin strip)<BR>
+pin_strip_1x2-90 (90 deg. 1x2-way pin strip)<BR>
+pin_strip_2 (2-way pin strip)<BR>
+pin_strip_2-90 (90 deg. 2-way pin strip)<BR>
+pin_strip_2x2 (2x2-way pin strip)<BR>
+pin_strip_2x2-90 (90 deg. 2x2-way pin strip)<BR>
+pin_strip_3 (3-way pin strip)<BR>
+pin_strip 3-90 (90 deg. 3-way pin strip)<BR>
+pin_strip_3x2 (2x3-way pin strip)<BR>
+pin_strip_3x2-90 (90 deg. 2x3-way pin strip)<BR>
+pin_strip_4 (4-way pin strip)<BR>
+pin_strip_4-90 (90 deg. 4-way pin strip)<BR>
+pin_strip_4x2 (2x4-way pin strip)<BR>
+pin_strip_4x2-90 (90 deg. 2x4-way pin strip)<BR>
+pin_strip_5 (5-way pin strip)<BR>
+pin_strip_5-90 (90 deg. 5-way pin strip)<BR>
+pin_strip_5x2 (2x5-way pin strip)<BR>
+pin_strip_5x2-90 (90 deg. 2x5-way pin strip)<BR>
+pin_strip_6 (6-way pin strip)<BR>
+pin_strip_6-90 (90 deg. 6-way pin strip)<BR>
+pin_strip_6x2 (2x6-way pin strip)<BR>
+pin_strip_6x2-90 (90 deg. 2x6-way pin strip)<BR>
+pin_strip_7 (7-way pin strip)<BR>
+pin_strip_7-90 (90 deg. 7-way pin strip)<BR>
+pin_strip_7x2 (2x7-way pin strip)<BR>
+pin_strip_7x2-90 (90 deg. 2x7-way pin strip)<BR>
+pin_strip_8 (8-way pin strip)<BR>
+pin_strip_8-90 (90 deg. 8-way pin strip)<BR>
+pin_strip_8x2 (2x8-way pin strip)<BR>
+pin_strip_8x2-90 (90 deg. 2x8-way pin strip)<BR>
+pin_strip_9 (9-way pin strip)<BR>
+pin_strip_9-90 (90 deg. 9-way pin strip)<BR>
+pin_strip_9x2 (2x9-way pin strip)<BR>
+pin_strip_9x2-90 (90 deg. 2x9-way pin strip)<BR>
+pin_strip_10 (10-way pin strip)<BR>
+pin_strip_10-90 (90 deg. 10-way pin strip)<BR>
+pin_strip_10x2 (2x10-way pin strip)<BR>
+pin_strip_10x2-90 (90 deg. 2x10-way pin strip)<BR>
+pin_strip_11 (11-way pin strip)<BR>
+pin_strip_11-90 (90 deg. 11-way pin strip)<BR>
+pin_strip_11x2 (2x11-way pin strip)<BR>
+pin_strip_11x2-90 (90 deg. 2x11-way pin strip)<BR>
+pin_strip_12 (12-way pin strip)<BR>
+pin_strip_12-90 (90 deg. 12-way pin strip)<BR>
+pin_strip_12x2 (2x12-way pin strip)<BR>
+pin_strip_12x2-90 (90 deg. 2x12-way pin strip)<BR>
+pin_strip_13 (13-way pin strip)<BR>
+pin_strip_13-90 (90 deg. 13-way pin strip)<BR>
+pin_strip_13x2 (2x13-way pin strip)<BR>
+pin_strip_13x2-90 (90 deg. 2x13-way pin strip)<BR>
+pin_strip_14 (14-way pin strip)<BR>
+pin_strip_14-90 (90 deg. 14-way pin strip)<BR>
+pin_strip_14x2 (2x14-way pin strip)<BR>
+pin_strip_14x2-90 (90 deg. 2x14-way pin strip)<BR>
+pin_strip_15 (15-way pin strip)<BR>
+pin_strip_15-90 (90 deg. 15-way pin strip)<BR>
+pin_strip_15x2 (2x15-way pin strip)<BR>
+pin_strip_15x2-90 (90 deg. 2x15-way pin strip)<BR>
+pin_strip_16 (16-way pin strip)<BR>
+pin_strip_16-90 (90 deg. 16-way pin strip)<BR>
+pin_strip_16x2 (2x16-way pin strip)<BR>
+pin_strip_16x2-90 (90 deg. 2x16-way pin strip)<BR>
+pin_strip_17 (17-way pin strip)<BR>
+pin_strip_17-90 (90 deg. 17-way pin strip)<BR>
+pin_strip_17x2 (2x17-way pin strip)<BR>
+pin_strip_17x2-90 (90 deg. 2x17-way pin strip)<BR>
+pin_strip_18 (18-way pin strip)<BR>
+pin_strip_18-90 (90 deg. 18-way pin strip)<BR>
+pin_strip_18x2 (2x18-way pin strip)<BR>
+pin_strip_18x2-90 (90 deg. 2x18-way pin strip)<BR>
+pin_strip_19 (19-way pin strip)<BR>
+pin_strip_19-90 (90 deg. 19-way pin strip)<BR>
+pin_strip_19x2 (2x19-way pin strip)<BR>
+pin_strip_19x2-90 (90 deg. 2x19-way pin strip)<BR>
+pin_strip_20 (20-way pin strip)<BR>
+pin_strip_20-90 (90 deg. 20-way pin strip)<BR>
+pin_strip_20x2 (2x20-way pin strip)<BR>
+pin_strip_20x2-90 (90 deg. 2x20-way pin strip)<BR>
+pin_strip_2mm_1 (1-way pin strip)<BR>
+pin_strip_2mm_2 (2-way pin strip)<BR>
+pin_strip_2mm_2x2 (2x2-way pin strip)<BR>
+pin_strip_2mm_3 (3-way pin strip)<BR>
+pin_strip_2mm_3x2 (3x2-way pin strip)<BR>
+pin_strip_2mm_4 (4-way pin strip)<BR>
+pin_strip_2mm_4x2 (4x2-way pin strip)<BR>
+pin_strip_2mm_5 (5-way pin strip)<BR>
+pin_strip_2mm_5x2 (5x2-way pin strip)<BR>
+pin_strip_2mm_6 (6-way pin strip)<BR>
+pin_strip_2mm_6x2 (6x2-way pin strip)<BR>
+pin_strip_2mm_7 (7-way pin strip)<BR>
+pin_strip_2mm_7x2 (7x2-way pin strip)<BR>
+pin_strip_2mm_8 (8-way pin strip)<BR>
+pin_strip_2mm_8x2 (8x2-way pin strip)<BR>
+pin_strip_2mm_9 (9-way pin strip)<BR>
+pin_strip_2mm_9x2 (9x2-way pin strip)<BR>
+pin_strip_2mm_10 (10-way pin strip)<BR>
+pin_strip_2mm_10x2 (10x2-way pin strip)<BR>
+pin_strip_2mm_11 (11-way pin strip)<BR>
+pin_strip_2mm_11x2 (11x2-way pin strip)<BR>
+pin_strip_2mm_12 (12-way pin strip)<BR>
+pin_strip_2mm_12x2 (12x2-way pin strip)<BR>
+pin_strip_2mm_13 (13-way pin strip)<BR>
+pin_strip_2mm_13x2 (13x2-way pin strip)<BR>
+pin_strip_2mm_14 (14-way pin strip)<BR>
+pin_strip_2mm_14x2 (14x2-way pin strip)<BR>
+pin_strip_2mm_15 (15-way pin strip)<BR>
+pin_strip_2mm_15x2 (15x2-way pin strip)<BR>
+pin_strip_2mm_16 (16-way pin strip)<BR>
+pin_strip_2mm_16x2 (16x2-way pin strip)<BR>
+pin_strip_2mm_17 (17-way pin strip)<BR>
+pin_strip_2mm_17x2 (17x2-way pin strip)<BR>
+pin_strip_2mm_18 (18-way pin strip)<BR>
+pin_strip_2mm_18x2 (18x2-way pin strip)<BR>
+pin_strip_2mm_19 (19-way pin strip)<BR>
+pin_strip_2mm_19x2 (19x2-way pin strip)<BR>
+pin_strip_2mm_20 (20-way pin strip)<BR>
+pin_strip_2mm_20x2 (20x2-way pin strip)<BR>
+pin_strip_2mm_21 (21-way pin strip)<BR>
+pin_strip_2mm_21x2 (21x2-way pin strip)<BR>
+pin_strip_2mm_22 (22-way pin strip)<BR>
+pin_strip_2mm_22x2 (22x2-way pin strip)<BR>
+pin_strip_2mm_23 (23-way pin strip)<BR>
+pin_strip_2mm_23x2 (23x2-way pin strip)<BR>
+pin_strip_2mm_24 (24-way pin strip)<BR>
+pin_strip_2mm_24x2 (24x2-way pin strip)<BR>
+pin_strip_2mm_25 (25-way pin strip)<BR>
+pin_strip_2mm_25x2 (25x2-way pin strip)<BR>
+pin_strip_2mm_26 (26-way pin strip)<BR>
+pin_strip_2mm_26x2 (26x2-way pin strip)<BR>
+pin_strip_2mm_27 (27-way pin strip)<BR>
+pin_strip_2mm_27x2 (27x2-way pin strip)<BR>
+pin_strip_2mm_28 (28-way pin strip)<BR>
+pin_strip_2mm_28x2 (28x2-way pin strip)<BR>
+pin_strip_2mm_29 (29-way pin strip)<BR>
+pin_strip_2mm_29x2 (29x2-way pin strip)<BR>
+pin_strip_2mm_30 (30-way pin strip)<BR>
+pin_strip_2mm_30x2 (30x2-way pin strip)<BR>
+pin_strip_2mm_31 (31-way pin strip)<BR>
+pin_strip_2mm_31x2 (31x2-way pin strip)<BR>
+pin_strip_2mm_32 (32-way pin strip)<BR>
+pin_strip_2mm_32x2 (32x2-way pin strip)<BR>
+pin_strip_2mm_33 (33-way pin strip)<BR>
+pin_strip_2mm_33x2 (33x2-way pin strip)<BR>
+pin_strip_2mm_34 (34-way pin strip)<BR>
+pin_strip_2mm_34x2 (34x2-way pin strip)<BR>
+pin_strip_2mm_35 (35-way pin strip)<BR>
+pin_strip_2mm_35x2 (35x2-way pin strip)<BR>
+pin_strip_2mm_36 (36-way pin strip)<BR>
+pin_strip_2mm_36x2 (36x2-way pin strip)<BR>
+pin_strip_2mm_37 (37-way pin strip)<BR>
+pin_strip_2mm_37x2 (37x2-way pin strip)<BR>
+pin_strip_2mm_38 (38-way pin strip)<BR>
+pin_strip_2mm_38x2 (38x2-way pin strip)<BR>
+pin_strip_2mm_39 (39-way pin strip)<BR>
+pin_strip_2mm_39x2 (39x2-way pin strip)<BR>
+pin_strip_2mm_40 (40-way pin strip)<BR>
+pin_strip_2mm_40x2 (40x2-way pin strip)<BR>
+pin_strip_2mm_41 (41-way pin strip)<BR>
+pin_strip_2mm_41x2 (41x2-way pin strip)<BR>
+pin_strip_2mm_42 (42-way pin strip)<BR>
+pin_strip_2mm_42x2 (42x2-way pin strip)<BR>
+pin_strip_2mm_43 (43-way pin strip)<BR>
+pin_strip_2mm_43x2 (43x2-way pin strip)<BR>
+pin_strip_2mm_44 (44-way pin strip)<BR>
+pin_strip_2mm_44x2 (44x2-way pin strip)<BR>
+pin_strip_2mm_45 (45-way pin strip)<BR>
+pin_strip_2mm_45x2 (45x2-way pin strip)<BR>
+pin_strip_2mm_46 (46-way pin strip)<BR>
+pin_strip_2mm_46x2 (46x2-way pin strip)<BR>
+pin_strip_2mm_47 (47-way pin strip)<BR>
+pin_strip_2mm_47x2 (47x2-way pin strip)<BR>
+pin_strip_2mm_48 (48-way pin strip)<BR>
+pin_strip_2mm_48x2 (48x2-way pin strip)<BR>
+pin_strip_2mm_49 (49-way pin strip)<BR>
+pin_strip_2mm_49x2 (49x2-way pin strip)<BR>
+pin_strip_2mm_50 (50-way pin strip)<BR>
+pin_strip_2mm_50x2 (50x2-way pin strip)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>PTH ICs <FONT color=#ffaaaa>(26/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_pth_circuits.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_pth_circuits.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_pth_circuits.jpg" align=center width=800><BR>
+<UL>
+dcdc_dil (DC/DC converter, DIL14 package)<BR>
+dcdc_dil8 (DC/DC converter, DIL8 package)<BR>
+dcdc_sil (DC/DC converter, SIL7(2+3) package)<BR>
+dcdc_sil4 (DC/DC converter, SIL4 package)<BR>
+dcdc_sil7(2+4) (DC/DC converter, SIL7(2+4) package)<BR>
+dil_4-300 (dil4x0.3' IC)<BR>
+dil_6-300 (dil6x0.3' IC)<BR>
+dil_6-300_socket (dil6x0.3' IC with socket)<BR>
+dil_8-300 (dil8x0.3' IC)<BR>
+dil_8-300_socket (dil8x0.3' IC with socket)<BR>
+dil_14-300 (dil14x0.3' IC)<BR>
+dil_14-300_socket (dil14x0.3' IC with socket)<BR>
+dil_16-300 (dil16x0.3' IC)<BR>
+dil_16-300_socket (dil16x0.3' IC with socket)<BR>
+dil_18-300 (dil18x0.3' IC)<BR>
+dil_18-300_socket (dil18x0.3' IC with socket)<BR>
+dil_20-300 (dil20x0.3' IC)<BR>
+dil_20-300_socket (dil20x0.3' IC with socket)<BR>
+dil_22-300 (dil22x0.3' IC)<BR>
+dil_22-300_socket (dil22x0.3' IC with socket)<BR>
+dil_24-300 (dil24x0.3' IC)<BR>
+dil_24-300_socket (dil24x0.3' IC with socket)<BR>
+dil_24-600 (dil24x0.6' IC)<BR>
+dil_24-600_socket (dil24x0.6' IC with socket)<BR>
+dil_28-300 (dil28x0.3' IC)<BR>
+dil_28-300_socket (dil28x0.3' IC with socket)<BR>
+dil_28-600 (dil28x0.6' IC)<BR>
+dil_28-600_socket (dil28x0.6' IC with socket)<BR>
+dil_40-600 (dil40x0.6' IC)<BR>
+dil_40-600_socket (dil40x0.6' IC with socket)<BR>
+dil_48-600 (dil40x0.6' IC)<BR>
+dil_48-600_socket (dil48x0.6' IC with socket)<BR>
+spm26 (Fairchild SPM26 DIL package)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>PTH Diodes <FONT color=#ffaaaa>(18/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_pth_diodes.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_pth_diodes.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_pth_diodes.jpg" align=center width=800><BR>
+<UL>
+bridge_2kbp (2KBPM series power diode bridge)<BR>
+bridge_dfm (DFM series diode bridge)<BR>
+bridge_kbu4 (KBU series power diode bridge)<BR>
+bridge_WOB (1A radial diode bridge)<BR>
+diode_do15 (DO-15 plastic diode)<BR>
+diode_do35 (DO-35 glass diode)<BR>
+diode_do41 (DO-41 plastic diode)<BR>
+diode_do201 (DO-201 plastic diode)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>PTH ICs, PLCC with socket series TE 1-822473-x <FONT color=#ffaaaa>(18/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_pth_plcc.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_pth_plcc.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_pth_plcc.jpg" align=center width=800><BR>
+<UL>
+PLCC20_pth-skt<BR>
+PLCC28_pth-skt<BR>
+PLCC32_pth-skt<BR>
+PLCC44_pth-skt<BR>
+PLCC52_pth-skt<BR>
+PLCC68_pth-skt<BR>
+PLCC84_pth-skt<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>PTH Resistors <FONT color=#ffaaaa>(14/02/2015)</FONT> - <A href="/kicad_libs/modules/mod_pth_resistors.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_pth_resistors.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_pth_resistors.jpg" align=center width=800><BR>
+<UL>
+r-sil_4 (SIL 4 pin resistor network)<BR>
+r-sil_5 (SIL 5 pin resistor network)<BR>
+r-sil_6 (SIL 6 pin resistor network)<BR>
+r-sil_7 (SIL 7 pin resistor network)<BR>
+r-sil_8 (SIL 8 pin resistor network)<BR>
+r-sil_9 (SIL 9 pin resistor network)<BR>
+r-sil_10 (SIL 10 pin resistor network)<BR>
+r-sil_11 (SIL 11 pin resistor network)<BR>
+r-sil_12 (SIL 12 pin resistor network)<BR>
+r-sil_13 (SIL 13 pin resistor network)<BR>
+r-sil_14 (SIL 14 pin resistor network)<BR>
+rc03 (.25W resistor)<BR>
+rc03_vert (.25W vertical resistor)<BR>
+rc05 (.33W resistor)<BR>
+rc05_vert (.33W vertical resistor)<BR>
+rc07 (1W resistor)<BR>
+rc07_vert (1W vertical resistor)<BR>
+r12x5.2 (12x5.2mm resistor)<BR>
+r12x5.2_vert (12x5.2mm vertical resistor)<BR>
+r13.5x6 (13.5x6mm resistor)<BR>
+r13.5x6_vert (13.5x6mm vertical resistor)<BR>
+r15.5x6 (15.5x6mm resistor)<BR>
+r15.5x6_vert (15.5x6mm vertical resistor)<BR>
+r22x8 (22x8mm resistor)<BR>
+r22x8_vert (22x8mm vertical resistor)<BR>
+r25x8 (25x8mm resistor)<BR>
+r25x8_vert (25x8mm vertical resistor)<BR>
+rc_vert_26x14x10 (radial power resistor, h=26mm, l=14mm, w=10mm)<BR>
+trimmer_alps-rk09k1130ah1 (9mm trimmer, Alps RK09K1130AH1)<BR>
+trimmer_alps_rk12l12c0-f15-c0 (12mm trimmer, Alps RK12L12C0)<BR>
+trimmer_alps_rk12l12c0-f20-c0 (12mm trimmer, Alps RK12L12C0)<BR>
+trimmer_alps_rk12l12c0-f25-c0 (12mm trimmer, Alps RK12L12C0)<BR>
+trimmer_alps_rk12l12c0-f30-c0 (12mm trimmer, Alps RK12L12C0)<BR>
+trimmer_bourns_3005 (multiturn trimmer, Bourns 3005)<BR>
+trimmer_bourns_3006p (multiturn trimmer, Bourns 3006P)<BR>
+trimmer_bourns_3006w (multiturn trimmer, Bourns 3006W)<BR>
+trimmer_bourns_3006y (multiturn trimmer, Bourns 3006Y)<BR>
+trimmer_bourns_3009p (multiturn trimmer, Bourns 3009P)<BR>
+trimmer_bourns_3009y (multiturn trimmer, Bourns 3009Y)<BR>
+trimmer_bourns_3250w (multiturn vertical trimmer, Bourns 3250W)<BR>
+trimmer_diplohm_p91 (cermet multiturn vertical trimmer, Diplohmatic P91)<BR>
+trimmer_diplohm_p92 (cermet multiturn trimmer, Diplohmatic P92)<BR>
+trimmer_diplohm_p94 (cermet multiturn vertical trimmer, Diplohmatic P94)<BR>
+trimmer_diplohm_p95 (cermet multiturn vertical trimmer, Diplohmatic P95)<BR>
+trimmer_diplohm_p97 (cermet multiturn vertical trimmer, Diplohmatic P97)<BR>
+trimmer_ecp_ca9-h2,5 (vertical trimmer, ECP CA9 H2,5)<BR>
+trimmer_ecp_ca9-v10 (trimmer, ECP CA9 V10)<BR>
+trimmer_piher_pt6xv (vertical trimmer, Piher PT6-xV)<BR>
+trimmer_piher_pt6xh (trimmer, Piher PT6-xH)<BR>
+trimmer_piher_pt10xv10 (vertical trimmer, Piher PT10-xV10)<BR>
+trimmer_piher_pt15xh05 (trimmer, Piher PT15-xH05)<BR>
+trimmer_piher_pt15xvx2 (vertical trimmer, Piher PT15-xVx2)<BR>
+trimmer_vishay_64w (cermet multiturn vertical trimmer, Vishay 64W)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Relais <FONT color=#ffaaaa>(31/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_relay.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_relay.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_relay.jpg" align=center width=800><BR>
+<UL>
+relay_34.51 (Finder 34.51 type relay)<BR>
+relay_34.51.7 (Finder 34.51.7 type relay)<BR>
+relay_34.81 (Finder 34.81 type solid state relay)<BR>
+relay_40.31 (Finder 40.31 type relay)<BR>
+relay_40.31_socket (Finder 40.31 type relay with 95.13.2 socket)<BR>
+relay_40.51 (Finder 40.51 type relay)<BR>
+relay_40.51_socket (Finder 40.51 type relay with 95.15.2 socket)<BR>
+relay_40.52 (Finder 40.52 type relay)<BR>
+relay_40.52_socket (Finder 40.52 type relay with 95.15.2 socket)<BR>
+relay_40.61 (Finder 40.61 type relay)<BR>
+relay_40.61_socket (Finder 40.61 type relay with 95.15.2 socket)<BR>
+relay_9001 (Coto 9001 type reed relay)<BR>
+relay_9002 (Coto 9002 type reed relay)<BR>
+relay_DK1a (Matsushita DK1a type relay)<BR>
+relay_DK1a-L2 (Matsushita DK1a dual coil latch type relay)<BR>
+relay_DK1a1b (Matsushita DK1a1b type relay)<BR>
+relay_DK1a1b-L2 (Matsushita DK1a1b dual coil latch type relay)<BR>
+relay_DK2a (Matsushita DK2a type relay)<BR>
+relay_DK2a-L2 (Matsushita DK2a dual coil latch type relay)<BR>
+relay_GQ-PTH (Panasonic GQ type relay, PTH version)<BR>
+relay_GQ-SMD-A (Panasonic GQ type relay, SMD-A version)<BR>
+relay_GQ-SMD-S (Panasonic GQ type relay, SMD-S version)<BR>
+relay_hb (National HB type relay)<BR>
+relay_HJR-3FF_H (Tianbo HJR type relay, form A)<BR>
+relay_HJR-3FF_Z (Tianbo HJR type relay, form C)<BR>
+relay_js-k (Takamisawa JS-K series relay, form C)<BR>
+relay_pe (Schrack PE type relay)<BR>
+relay_rt1 (Schrack RT1 type relay)<BR>
+relay_rt1_3mm5_spdt (Schrack RT1 series relay, 3.5mm pitch, form C)<BR>
+relay_rt1_3mm5_spno (Schrack RT1 series relay, 3.5mm pitch, form A)<BR>
+relay_sj-1m (Sanyou SJ-x-1xxxM series relay, form A)<BR>
+relay_SSR-P03 (Fotek SSR-P03 type solid state relay)<BR>
+relay_SSR-xxDA (Fotek SSR-xxDA type solid state relay)<BR>
+relay_sy (Takamisawa SY type relay)<BR>
+relay_t9as1x1 (TE T9AS1x1 type relay)<BR>
+relay_t9as2x1 (TE T9AS2x1 type relay)<BR>
+relay_t9as5x1 (TE T9AS5x1 type relay)<BR>
+relay_V23042 (Siemens V23042 type relay)<BR>
+relay_V23042-B2 (Siemens V23042 dual coil latch type relay)<BR>
+relay_V23101-D0 (Tyco V23101-D0 type relay)<BR>
+relay_V23101-D1 (Tyco V23101-D1 type relay)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>RF modules <FONT color=#ffaaaa>(18/03/2015)</FONT> - <A href="/kicad_libs/modules/mod_rf_modules.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_rf_modules.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_rf_modules.jpg" align=center width=800><BR>
+<UL>
+8devices_carambola2 (8Devices Carambola 2 802.11 b/g/n Wireless Network module)<BR>
+anaren_a1101rxxa (Anaren A1101RxxA RF module)<BR>
+anaren_a1101rxxc (Anaren A1101RxxC RF module)<BR>
+anaren_a2500r24a (Anaren A2500R24A RF module)<BR>
+anaren_a8520e24a91 (Anaren A8520E24A91 PurePath RF module)<BR>
+id_id2la (ID-Innovation ID-2LA RFID module)<BR>
+id_id12la (ID-Innovation ID-12LA RFID module)<BR>
+id_id20la (ID-Innovation ID-20LA RFID module)<BR>
+itead_hc-05 (Itead HC-05 serial Bluetooth module)<BR>
+panasonic_pan131x (Panasonic PAN131x Bluetooth module)<BR>
+panasonic_pan132x (Panasonic PAN132x Bluetooth module)<BR>
+qm-5767 (QM-5767-F00 FM digital tuner module)<BR>
+rfm12b_pth (Hope RFM12B module, PTH version)<BR>
+rfm12b_smd (Hope RFM12B module, SMD version)<BR>
+rfm22b_pth (Hope RFM22B module, PTH version)<BR>
+rfm22b_smd (Hope RFM22B module, SMD version)<BR>
+roving_rn-42 (Roving Network Bluetooth module)<BR>
+roving_rn-42-n (Roving Network Bluetooth module)<BR>
+roving_rn-131 (Roving Network 802.11 b/g module)<BR>
+telit_gl865 (Telit GL865 GSM/GPRS module)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Switches <FONT color=#ffaaaa>(17/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_switch.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_switch.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_switch.jpg" align=center width=800><BR>
+<UL>
+dip_1-300 (1-way 0.3' dip switch)<BR>
+dip_2-300 (2-way 0.3' dip switch)<BR>
+dip_3-300 (3-way 0.3' dip switch)<BR>
+dip_4-300 (4-way 0.3' dip switch)<BR>
+dip_5-300 (5-way 0.3' dip switch)<BR>
+dip_6-300 (6-way 0.3' dip switch)<BR>
+dip_7-300 (7-way 0.3' dip switch)<BR>
+dip_8-300 (8-way 0.3' dip switch)<BR>
+dip_9-300 (9-way 0.3' dip switch)<BR>
+dip_10-300 (10-way 0.3' dip switch)<BR>
+dip_12-300 (12-way 0.3' dip switch)<BR>
+pcb_push (PCB pushbutton, Tyco series FSM6x6)<BR>
+pcb_push2 (PCB pushbutton, TEC series R18-801A)<BR>
+pcb_push_xiejia_pb-11d01 (PCB pushbutton, Xiejia PB-11D01)<BR>
+pcb_push_xiejia_pb-11d03 (PCB pushbutton, Xiejia PB-11D03)<BR>
+pcb_push_xiejia_pb-11d14 (PCB pushbutton, Xiejia PB-11D14)<BR>
+smd_push (smd pushbutton)<BR>
+smd_push2 (smd pushbutton)<BR>
+smd_push_xiejia_pb-11d06 (smd pushbutton, Xiejia PB-11D06)<BR>
+switch_100sp5 (E-Switch 100sp5 type switch)<BR>
+switch_mfp116dg-ra (Knitter MFP 116 DG-RA switch)<BR>
+switch_mmp122-r (Knitter MMP 122-R switch)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>TO and similars <FONT color=#ffaaaa>(14/02/2015)</FONT> - <A href="/kicad_libs/modules/mod_to.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_to.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_to.jpg" align=center width=800><BR>
+<UL>
+hzip25-100f (Toshiba HZIP25-1.00F package)<BR>
+ipak (IPAK with bended pins)<BR>
+ipak_std (IPAK standard)<BR>
+multiwatt11 (Multiwatt - TO220 like - with 11 pins)<BR>
+multiwatt15 (Multiwatt - TO220 like - with 15 pins)<BR>
+pentawatt (Pentawatt - TO220 like - with 5 pins)<BR>
+sot82 (SOT82 with bended pins)<BR>
+sot82_std (SOT82 standard)<BR>
+to3-2 (TO3 with 2 pins)<BR>
+to3-4 (TO3 with 4 pins)<BR>
+to3-8 (TO3 with 8 pins)<BR>
+to18 (TO18 with 3 pins)<BR>
+to18-4 (TO18 with 3 pins)<BR>
+to92_3 (TO92 standard)<BR>
+to92_3_flat (TO92 standard with straight pins)<BR>
+to99 (TO99 standard)<BR>
+to220 (TO220 with bended pins)<BR>
+to220_11cw (TO220 with bended pins and 11&deg;C/W heatsink - Aavid extrusion 0S172 series)<BR>
+to220_14cw (TO220 with bended pins and 14&deg;C/W heatsink - Aavid extrusion 0S172 series)<BR>
+to220_5770 (TO220 with bended pins and Aavid 5770 type 32&deg;C/W heatsink)<BR>
+to220_5771 (TO220 with bended pins and Aavid 5771 type 25.9&deg;C/W heatsink)<BR>
+to220_5772 (TO220 with bended pins and Aavid 5772 type 24.4&deg;C/W heatsink)<BR>
+to220-horiz (TO220 horizontal)<BR>
+to220-horiz_5770 (TO220 horizontal, with Aavid 5770 type 32&deg;C/W heatsink)<BR>
+to220-horiz_5771 (TO220 horizontal, with Aavid 5771 type 25.9&deg;C/W heatsink)<BR>
+to220-horiz_5772 (TO220 horizontal, with Aavid 5772 type 24.4&deg;C/Wheatsink)<BR>
+to220_std (TO220 standard)<BR>
+to220_std_11cw (TO220 standard with 11&deg;C/W heatsink - Aavid extrusion 0S172 series)<BR>
+to220_std_14cw (TO220 standard with 14&deg;C/W heatsink - Aavid extrusion 0S172 series)<BR>
+to220_std_5770 (TO220 standard with Aavid 5770 type 32&deg;C/W heatsink)<BR>
+to220_std_5771 (TO220 standard with Aavid 5771 type 25.9&deg;C/W heatsink)<BR>
+to220_std_5772 (TO220 standard with Aavid 5772 type 24.4&deg;C/W heatsink)<BR>
+to220-2 (TO220 with 2 pins)<BR>
+to220-2_11cw (TO220 with 2 pins and 11&deg;C/W heatsink - Aavid extrusion 0S172 series)<BR>
+to220-2_14cw (TO220 with 2 pins and 14&deg;C/W heatsink - Aavid extrusion 0S172 series)<BR>
+to220-2_5770 (TO220 with 2 pins and Aavid 5770 type 32&deg;C/W heatsink)<BR>
+to220-2_5771 (TO220 with 2 pins and Aavid 5771 type 25.9&deg;C/W heatsink)<BR>
+to220-2_5772 (TO220 with 2 pins and Aavid 5772 type 24.4&deg;C/W heatsink)<BR>
+to220-2-horiz (TO220 with 2 pins, horizontal)<BR>
+to220-2-horiz_5770 (TO220 with 2 pins, horizontal, with Aavid 5770 type 32&deg;C/W heatsink)<BR>
+to220-2-horiz_5771 (TO220 with 2 pins, horizontal, with Aavid 5771 type 25.9&deg;C/W heatsink)<BR>
+to220-2-horiz_5772 (TO220 with 2 pins, horizontal, with Aavid 5772 type 24.4&deg;C/W heatsink)<BR>
+to220-5 (TO220 with 5 pins)<BR>
+to220-5_11cw (TO220 with 5 pins and 11&deg;C/W heatsink - Aavid extrusion 0S172 series)<BR>
+to220-5_14cw (TO220 with 5 pins and 14&deg;C/W heatsink - Aavid extrusion 0S172 series)<BR>
+to220-5_5770 (TO220 with 5 pins and Aavid 5770 type 32&deg;C/W heatsink)<BR>
+to220-5_5771 (TO220 with 5 pins and Aavid 5771 type 25.9&deg;C/W heatsink)<BR>
+to220-5_5772 (TO220 with 5 pins and Aavid 5772 type 24.4&deg;C/W heatsink)<BR>
+to220-5-horiz (TO220 with 5 pins, horizontal)<BR>
+to220-5-horiz_5770 (TO220 with 5 pins, horizontal, with Aavid 5770 type 32&deg;C/W heatsink)<BR>
+to220-5-horiz_5771 (TO220 with 5 pins, horizontal, with Aavid 5771 type 25.9&deg;C/W heatsink)<BR>
+to220-5-horiz_5772 (TO220 with 5 pins, horizontal, with Aavid 5772 type 24.4&deg;C/W heatsink)<BR>
+to220-15 (TO220 with 15 pins)<BR>
+to225 (TO225-TO126 with bended pins)<BR>
+to225_std (TO225-TO126 standard)<BR>
+to247 (TO247 standard)<BR>
+top3 (TOP3 standard)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>SMD ICs, BGA package <FONT color=#ffaaaa>(18/03/2015)</FONT> - <A href="/kicad_libs/modules/mod_smd_bga.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_smd_bga.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_smd_bga.jpg" align=center width=800><BR>
+<UL>
+BGA49 (0,8mm pitch, standard pin numbering)<BR>
+CABGA256 (0,8mm pitch, standard pin numbering)<BR>
+CSBGA132-O1 (0,5mm pitch, option 1, standard pin numbering)<BR>
+CSBGA132-O2 (0,5mm pitch, option 2, standard pin numbering)<BR>
+FBGA100 (1mm pitch, mirrored pin numbering)<BR>
+FBGA100-STD (1mm pitch, standard pin numbering)<BR>
+FBGA256 (1mm pitch, mirrored pin numbering)<BR>
+FBGA256-STD (1mm pitch, standard pin numbering)<BR>
+FBGA324 (1mm pitch, mirrored pin numbering)<BR>
+FBGA324-STD (1mm pitch, standard pin numbering)<BR>
+LBGA256 (1mm pitch, mirrored pin numbering)<BR>
+LBGA256-STD (1mm pitch, standard pin numbering)<BR>
+LFBGA217 (0,8mm pitch, mirrored pin numbering)<BR>
+LFBGA217-STD (0,8mm pitch, standard pin numbering)<BR>
+MAPBGA121 (1mm pitch, standard pin numbering)<BR>
+MBGA68 (0,5mm pitch, mirrored pin numbering)<BR>
+MBGA68-STD (0,5mm pitch, standard pin numbering)<BR>
+MBGA100 (0,5mm pitch, mirrored pin numbering)<BR>
+MBGA100-STD (0,5mm pitch, standard pin numbering)<BR>
+MBGA144 (0,5mm pitch, mirrored pin numbering)<BR>
+MBGA144-STD (0,5mm pitch, standard pin numbering)<BR>
+MBGA256 (0,5mm pitch, mirrored pin numbering)<BR>
+MBGA256-STD (0,5mm pitch, standard pin numbering)<BR>
+R-XBGA-N8 (0,5mm pitch, standard pin numbering)<BR>
+S-PBGA-N298 (0,65mm pitch, standard pin numbering)<BR>
+S-PBGA-N324 (0,8mm pitch, standard pin numbering)<BR>
+TFBGA48 (6x8mm, 0,8mm pitch, standard pin numbering)<BR>
+TFBGA48-9x11 (9x11mm, 0,8mm pitch, standard pin numbering)<BR>
+TFBGA100 (0,8mm pitch, mirrored pin numbering)<BR>
+TFBGA100-STD (0,8mm pitch, standard pin numbering)<BR>
+TFBGA144 (0,8mm pitch, mirrored pin numbering)<BR>
+TFBGA144-STD (0,8mm pitch, standard pin numbering)<BR>
+TFBGA180 (0,8mm pitch, mirrored pin numbering)<BR>
+TFBGA180-STD (0,8mm pitch, standard pin numbering)<BR>
+TWBGA78 (0,8mm pitch, standard pin numbering)<BR>
+TWBGA96 (0,8mm pitch, standard pin numbering)<BR>
+UBGA484-STD (0,8mm pitch, standard pin numbering)<BR>
+UCBGA225 (0,4mm pitch, standard pin numbering)<BR>
+UFBGA201 (0,65mm pitch, standard pin numbering)<BR>
+XBGA121 (0,8mm pitch, mirrored pin numbering)<BR>
+XBGA121-STD (0,8mm pitch, standard pin numbering)<BR>
+WLCSP90 (0,4mm pitch, standard pin numbering)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>SMD Capacitors <FONT color=#ffaaaa>(26/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_smd_cap.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_smd_cap.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_smd_cap.jpg" align=center width=800><BR>
+<UL>
+c_0402 (0402 capacitor)<BR>
+c_0603 (0603 capacitor)<BR>
+c_0805 (0805 capacitor)<BR>
+c_1206 (1206 capacitor)<BR>
+c_1210 (1210 capacitor)<BR>
+c_1808 (1808 capacitor)<BR>
+c_1812 (1812 capacitor)<BR>
+c_1825 (1825 capacitor)<BR>
+c_2220 (2220 capacitor)<BR>
+c_2225 (2225 capacitor)<BR>
+c_elec_3x5.3 (electrolytic capacitor dia=3mm h=5.3mm)<BR>
+c_elec_4x4.5 (electrolytic capacitor dia=4mm h=4.5mm)<BR>
+c_elec_4x5.3 (electrolytic capacitor dia=4mm h=5.3mm)<BR>
+c_elec_4x5.7 (electrolytic capacitor dia=4mm h=5.7mm)<BR>
+c_elec_4x5.8 (electrolytic capacitor dia=4mm h=5.8mm)<BR>
+c_elec_5x4.5 (electrolytic capacitor dia=5mm h=4.5mm)<BR>
+c_elec_5x5.3 (electrolytic capacitor dia=5mm h=5.3mm)<BR>
+c_elec_5x5.7 (electrolytic capacitor dia=5mm h=5.7mm)<BR>
+c_elec_5x5.8 (electrolytic capacitor dia=5mm h=5.8mm)<BR>
+c_elec_6.3x4.5 (electrolytic capacitor dia=6.3mm h=4.5mm)<BR>
+c_elec_6.3x5.3 (electrolytic capacitor dia=6.3mm h=5.3mm)<BR>
+c_elec_6.3x5.7 (electrolytic capacitor dia=6.3mm h=5.7mm)<BR>
+c_elec_6.3x5.8 (electrolytic capacitor dia=6.3mm h=5.8mm)<BR>
+c_elec_6.3x7.7 (electrolytic capacitor dia=6.3mm h=7.7mm)<BR>
+c_elec_8x6.5 (electrolytic capacitor dia=8mm h=6.5mm)<BR>
+c_elec_8x6.7 (electrolytic capacitor dia=8mm h=6.7mm)<BR>
+c_elec_8x10 (electrolytic capacitor dia=8mm h=10mm)<BR>
+c_elec_8x10.5 (electrolytic capacitor dia=8mm h=10.5mm)<BR>
+c_elec_10x7.7 (electrolytic capacitor dia=10mm h=7.7mm)<BR>
+c_elec_10x10 (electrolytic capacitor dia=10mm h=10mm)<BR>
+c_elec_10x10.5 (electrolytic capacitor dia=10mm h=10.5mm)<BR>
+c_tant_A (tantalum capacitor size A)<BR>
+c_tant_B (tantalum capacitor size B)<BR>
+c_tant_C (tantalum capacitor size C)<BR>
+c_tant_D (tantalum capacitor size D)<BR>
+c_tant_E (tantalum capacitor size E)<BR>
+c_tant_R (tantalum capacitor size R)<BR>
+c_tant_S (tantalum capacitor size S)<BR>
+c_tant_T (tantalum capacitor size T)<BR>
+c_tant_U (tantalum capacitor size U)<BR>
+c_tant_V (tantalum capacitor size V)<BR>
+c_tant_X (tantalum capacitor size X)<BR>
+cfeed_0805 (0805 feedthru capacitor)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>SMD ICs, various DIL packages <FONT color=#ffaaaa>(14/02/2015)</FONT> - <A href="/kicad_libs/modules/mod_smd_dil.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_smd_dil.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_smd_dil.jpg" align=center width=800><BR>
+<UL>
+HSOP-44<BR>
+MDIP-4<BR>
+MDIP-6<BR>
+MDIP-8<BR>
+MFP_4 (Mini flat package, 4 pin)<BR>
+MSOIC-8<BR>
+MSOIC-8_powerpad (SOIC-8 with heatsink pad)<BR>
+MSOIC-10<BR>
+MSOP-12 (SOIC-12 with heatsink pad)<BR>
+MSOP-16 (SOIC-16 with heatsink pad)<BR>
+MULTIPOWERSO-30<BR>
+PDSO-8<BR>
+PowerSO-20<BR>
+PSOP-8 (SO-8 with heatsink pad)<BR>
+PSOP-24 (SO-24 with heatsink pad)<BR>
+QSOP-16EP<BR>
+SMD_4<BR>
+SO-8<BR>
+SO-14<BR>
+SO-16<BR>
+SOIC-14<BR>
+SOIC-16<BR>
+SOIC-18<BR>
+SOIC-20<BR>
+SOIC-24<BR>
+SOIC-28<BR>
+SOIJ-8<BR>
+SSOP-16<BR>
+SSOP-24<BR>
+SSOP-28<BR>
+SSOP-48<BR>
+TSOC-6<BR>
+TSOP2-44<BR>
+TSSOP-8<BR>
+TSSOP-14<BR>
+TSSOP-16<BR>
+TSSOP-20<BR>
+TSSOP-24<BR>
+TSSOP-28<BR>
+TSSOP-32<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>SMD Diodes <FONT color=#ffaaaa>(18/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_smd_diode.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_smd_diode.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_smd_diode.jpg" align=center width=800><BR>
+<UL>
+DO214AA (SMB)<BR>
+DO214AB (SMC)<BR>
+DO214AC (SMA)<BR>
+DO219AB<BR>
+MBS (Diode bridge MBxS series)<BR>
+Melf<BR>
+Micromelf<BR>
+SDIP04A (Diode bridge DFxxS series)<BR>
+SOD87<BR>
+SOD80C<BR>
+SOD123<BR>
+SOD323<BR>
+SOD523<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>SMD inductors<FONT color=#ffaaaa>(18/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_smd_inductors.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_smd_inductors.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_smd_inductors.jpg" align=center width=800><BR>
+<UL>
+inductor_smd_0402 (0402 inductor)<BR>
+inductor_smd_0603 (0603 inductor)<BR>
+inductor_smd_0805 (0805 inductor)<BR>
+inductor_smd_1008 (1008 inductor)<BR>
+inductor_smd_4.8x2.8mm (SMD Inductor, d.4.8mm x h.2.8mm)<BR>
+inductor_smd_5.8x2.8mm (SMD Inductor, d.5.8mm x h.2.8mm)<BR>
+inductor_smd_6.5x4.8mm (Inductor SMD, d.6.5mm x h.4.8mm)<BR>
+inductor_smd_8x5mm (SMD Inductor, d.8mm x h.5mm)<BR>
+inductor_smd_do3316p (SMD Inductor, Coilcraft DO3316P)<BR>
+inductor_smd_pm2120 (SMD Inductor, Bourns PM2120)<BR>
+inductor_smd_ser2900 (SMD Inductor, Coilcraft SER2900)<BR>
+transf_smd_ep7-8 (SMD Transformer, EP7-8 model)<BR>
+transf_smd_ep10-8 (SMD Transformer, EP10-8 model)<BR>
+transf_smd_ep13-10 (SMD Transformer, EP13-10 model)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>SMD LEDs<FONT color=#ffaaaa>(18/03/2015)</FONT> - <A href="/kicad_libs/modules/mod_smd_leds.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_smd_leds.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_smd_leds.jpg" align=center width=800><BR>
+<UL>
+Avago_Aveon (Prolight Unicorn)<BR>
+Avago_Jade (Prolight Crab)<BR>
+Citizen_CL82x<BR>
+Citizen_CLL600<BR>
+Cree_CLM3C<BR>
+Cree_CLP6B<BR>
+Cree_MC-E<BR>
+Cree_ML-E<BR>
+Cree_MT<BR>
+Cree_MX<BR>
+Cree_XB<BR>
+Cree_XM<BR>
+Cree_XM-L_Color<BR>
+Cree_XP<BR>
+Cree_XR<BR>
+Edison_Edixeon_A<BR>
+Edison_Edixeon_RGB<BR>
+Edison_Federal_5050<BR>
+Led_0402<BR>
+Led_0603<BR>
+Led_0805<BR>
+Led_1206<BR>
+Led_PLCC2_3528<BR>
+Luxeon_C<BR>
+Luxeon_M<BR>
+Luxeon_Rebel<BR>
+Multi_Rebel+XP (footprint for compatibility with both Rebel and XP)<BR>
+Osram_Duris_E3<BR>
+Osram_Duris_E5<BR>
+Osram_Duris_P5<BR>
+Osram_Duris_S5<BR>
+Osram_GoldenDragon<BR>
+Osram_GoldenDragonPlus<BR>
+Osram_Oslon<BR>
+Osram_PlatinumDragon<BR>
+Samsung_2323<BR>
+Seoul_5630<BR>
+Seoul_P4<BR>
+Seoul_P5-II<BR>
+Seoul_Z7<BR>
+SFH5712 (Osram SFH 5712 2x2mm package)<BR>
+Sharp_DoubleDome<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>SMD ICs, LQFP packages <FONT color=#ffaaaa>(25/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_smd_lqfp.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_smd_lqfp.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_smd_lqfp.jpg" align=center width=800><BR>
+<UL>
+LQFP-32 (0.8 pitch)<BR>
+LQFP-44 (0.8 pitch)<BR>
+LQFP-48 (0.5 pitch)<BR>
+LQFP-52 (0.65 pitch)<BR>
+LQFP-64 (0.5 pitch)<BR>
+LQFP-80 (0.65 pitch)<BR>
+LQFP-80-05 (0.5 pitch)<BR>
+LQFP-112 (0.65 pitch)<BR>
+LQFP-128 (0.4 pitch)<BR>
+LQFP-176 (0.5 pitch)<BR>
+QFP-120 (0.5mm pitch)<BR>
+QFP-120-08 (0.8mm pitch)<BR>
+TQFP-64-08 (0.8 pitch)<BR>
+TQFP-100 (0.5 pitch)<BR>
+TQFP-100-4 (0.4 pitch)<BR>
+TQFP-144 (0.5 pitch)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>SMD ICs, PLCC packages <FONT color=#ffaaaa>(17/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_smd_plcc.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_smd_plcc.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_smd_plcc.jpg" align=center width=800><BR>
+<UL>
+PLCC20<BR>
+PLCC28<BR>
+PLCC32<BR>
+PLCC44<BR>
+PLCC52<BR>
+PLCC68<BR>
+PLCC84<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>SMD ICs, QFN packages <FONT color=#ffaaaa>(18/03/2015)</FONT> - <A href="/kicad_libs/modules/mod_smd_qfn.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_smd_qfn.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_smd_qfn.jpg" align=center width=800><BR>
+<UL>
+DFN-6_clock (big DFN package for HCMOS oscillators)<BR>
+DFN6-3x3 (Silicon Labs)<BR>
+DFN-S-8 (Microchip)<BR>
+DFN5 (ON Semiconductors, SO-8FL)<BR>
+DFN8 (ON Semiconductors)<BR>
+DFN8-2x3 (Microchip)<BR>
+DFN10-3x3 (Linear Technology)<BR>
+DFN12 (Linear Technology)<BR>
+DFN2018-6 (DIODES)<BR>
+HCLGA-10L (ST)<BR>
+HVSON8 (NXP SOT782-1)<BR>
+LFCSP-48 (National CP-48-3)<BR>
+LGA-24 (ST)<BR>
+PQFP-10<BR>
+PVQFN-N14 (Texas Instruments)<BR>
+PVQFN-N16 (Texas Instruments)<BR>
+PVQFN-N20 (Texas Instruments)<BR>
+PVQFN-N24 (Texas Instruments)<BR>
+PVQFN-N32 (Texas Instruments)<BR>
+PVQFN-N40 (Texas Instruments)<BR>
+PVQFN-N48 (Texas Instruments)<BR>
+QFN-16 (Freescale)<BR>
+QFN-20 (Microchip)<BR>
+QFN-24 (Micrel)<BR>
+QFN-28 (Microchip)<BR>
+QFN-44 (Microchip)<BR>
+QFN-64 (Microchip)<BR>
+R-PX2SON-N8 (Texas Instruments)<BR>
+R-QFN044-D (Dream)<BR>
+SOT883-1 (NXP XSON-8)<BR>
+SOT996-2 (NXP XSON8)<BR>
+TDFN8 (Microchip)<BR>
+WSON (Texas Instruments)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>SMD Resistors <FONT color=#ffaaaa>(25/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_smd_resistors.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_smd_resistors.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_smd_resistors.jpg" align=center width=800><BR>
+<UL>
+r_0402 (0402 resistor)<BR>
+r_0603 (0603 resistor)<BR>
+r_0805 (0805 resistor)<BR>
+r_1206 (1206 resistor)<BR>
+r_1210 (1210 resistor)<BR>
+r_2010 (2010 resistor)<BR>
+r_2512 (2512 resistor)<BR>
+r_cat16-2 (SMT resistor net, Bourns CAT16 series, 2 way)<BR>
+r_cat16-4 (SMT resistor net, Bourns CAT16 series, 4 way)<BR>
+r_cat16-8 (SMT resistor net, Bourns CAT16 series, 8 way)<BR>
+trim_bi_23b (SMT trimmer, BI Technologies 23B)<BR>
+trim_bourns_3214g (SMT trimmer, Bourns 3214G/3224G)<BR>
+trim_bourns_3214j (SMT trimmer, Bourns 3214J/3224J)<BR>
+trim_bourns_3214w (SMT vertical trimmer, Bourns 3214W/3224W)<BR>
+trim_bourns_3214x (SMT vertical trimmer, Bourns 3214X/3224X)<BR>
+trim_bourns_3223g (SMT trimmer, Bourns 3223G)<BR>
+trim_bourns_3223j (SMT trimmer, Bourns 3223J)<BR>
+trim_bourns_3223w (SMT vertical trimmer, Bourns 3223W)<BR>
+trim_diplohm_s11 (SMT vertical trimmer, Diplohmatic S11)<BR>
+trim_diplohm_s13 (SMT vertical trimmer, Diplohmatic S13)<BR>
+trim_murata_pva2a (SMT vertical trimmer, Murata PVA2A)<BR>
+trim_murata_pvf2 (SMT vertical trimmer, Murata PVF2)<BR>
+trim_murata_pvz2a (SMT vertical trimmer, Murata PVZ2A)<BR>
+trim_murata_pvz2k (SMT vertical trimmer, Murata PVZ2K)<BR>
+trim_murata_pvz2r (SMT vertical trimmer, Murata PVZ2R)<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>SMD pin strips <FONT color=#ffaaaa>(6/04/2015)</FONT> - <A href="/kicad_libs/modules/mod_smd_strip.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_smd_strip.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_smd_strip.jpg" align=center width=800><BR>
+<UL>
+bb02-hp04<BR>
+bb02-hp04_peg<BR>
+bb02-hp6<BR>
+bb02-hp6_peg<BR>
+bb02-hp8<BR>
+bb02-hp8_peg<BR>
+bb02-hp10<BR>
+bb02-hp10_peg<BR>
+bb02-hp12<BR>
+bb02-hp12_peg<BR>
+bb02-hp14<BR>
+bb02-hp14_peg<BR>
+bb02-hp16<BR>
+bb02-hp16_peg<BR>
+bb02-hp18<BR>
+bb02-hp18_peg<BR>
+bb02-hp20<BR>
+bb02-hp20_peg<BR>
+bb02-hp22<BR>
+bb02-hp22_peg<BR>
+bb02-hp24<BR>
+bb02-hp24_peg<BR>
+bb02-hp26<BR>
+bb02-hp26_peg<BR>
+bb02-hp28<BR>
+bb02-hp28_peg<BR>
+bb02-hp30<BR>
+bb02-hp30_peg<BR>
+bb02-hp32<BR>
+bb02-hp32_peg<BR>
+bb02-hp34<BR>
+bb02-hp34_peg<BR>
+bb02-hp36<BR>
+bb02-hp36_peg<BR>
+bb02-hp38<BR>
+bb02-hp38_peg<BR>
+bb02-hp40<BR>
+bb02-hp40_peg<BR>
+bb02-hp42<BR>
+bb02-hp42_peg<BR>
+bb02-hp44<BR>
+bb02-hp44_peg<BR>
+bb02-hp46<BR>
+bb02-hp46_peg<BR>
+bb02-hp48<BR>
+bb02-hp48_peg<BR>
+bb02-hp50<BR>
+bb02-hp50_peg<BR>
+bb02-hp52<BR>
+bb02-hp52_peg<BR>
+bb02-hp54<BR>
+bb02-hp54_peg<BR>
+bb02-hp56<BR>
+bb02-hp56_peg<BR>
+bb02-hp58<BR>
+bb02-hp58_peg<BR>
+bb02-hp60<BR>
+bb02-hp60_peg<BR>
+bb02-hp62<BR>
+bb02-hp62_peg<BR>
+bb02-hp64<BR>
+bb02-hp64_peg<BR>
+bb02-hp66<BR>
+bb02-hp66_peg<BR>
+bb02-hp68<BR>
+bb02-hp68_peg<BR>
+bb02-hp70<BR>
+bb02-hp70_peg<BR>
+bb02-hp72<BR>
+bb02-hp72_peg<BR>
+bb02-hp74<BR>
+bb02-hp74_peg<BR>
+bb02-hp76<BR>
+bb02-hp76_peg<BR>
+bb02-hp78<BR>
+bb02-hp78_peg<BR>
+bb02-hp80<BR>
+bb02-hp80_peg<BR>
+bb02-hy02a<BR>
+bb02-hy03a<BR>
+bb02-hy04a<BR>
+bb02-hy05a<BR>
+bb02-hy06a<BR>
+bb02-hy07a<BR>
+bb02-hy08a<BR>
+bb02-hy09a<BR>
+bb02-hy10a<BR>
+bb02-hy11a<BR>
+bb02-hy12a<BR>
+bb02-hy13a<BR>
+bb02-hy14a<BR>
+bb02-hy15a<BR>
+bb02-hy16a<BR>
+bb02-hy17a<BR>
+bb02-hy18a<BR>
+bb02-hy19a<BR>
+bb02-hy20a<BR>
+bb02-hy21a<BR>
+bb02-hy22a<BR>
+bb02-hy23a<BR>
+bb02-hy24a<BR>
+bb02-hy25a<BR>
+bb02-hy26a<BR>
+bb02-hy27a<BR>
+bb02-hy28a<BR>
+bb02-hy29a<BR>
+bb02-hy30a<BR>
+bb02-hy31a<BR>
+bb02-hy32a<BR>
+bb02-hy33a<BR>
+bb02-hy34a<BR>
+bb02-hy35a<BR>
+bb02-hy36a<BR>
+bb02-hy37a<BR>
+bb02-hy38a<BR>
+bb02-hy39a<BR>
+bb02-hy40a<BR>
+bb080_06<BR>
+bb080_06_peg<BR>
+bb080_08<BR>
+bb080_08_peg<BR>
+bb080_10<BR>
+bb080_10_peg<BR>
+bb080_12<BR>
+bb080_12_peg<BR>
+bb080_14<BR>
+bb080_14_peg<BR>
+bb080_16<BR>
+bb080_16_peg<BR>
+bb080_18<BR>
+bb080_18_peg<BR>
+bb080_20<BR>
+bb080_20_peg<BR>
+bb080_22<BR>
+bb080_22_peg<BR>
+bb080_24<BR>
+bb080_24_peg<BR>
+bb080_26<BR>
+bb080_26_peg<BR>
+bb080_28<BR>
+bb080_28_peg<BR>
+bb080_30<BR>
+bb080_30_peg<BR>
+bb080_32<BR>
+bb080_32_peg<BR>
+bb080_34<BR>
+bb080_34_peg<BR>
+bb080_36<BR>
+bb080_36_peg<BR>
+bb080_38<BR>
+bb080_38_peg<BR>
+bb080_40<BR>
+bb080_40_peg<BR>
+bb080_42<BR>
+bb080_42_peg<BR>
+bb080_44<BR>
+bb080_44_peg<BR>
+bb080_46<BR>
+bb080_46_peg<BR>
+bb080_48<BR>
+bb080_48_peg<BR>
+bb080_50<BR>
+bb080_50_peg<BR>
+bb080_52<BR>
+bb080_52_peg<BR>
+bb080_54<BR>
+bb080_54_peg<BR>
+bb080_56<BR>
+bb080_56_peg<BR>
+bb080_58<BR>
+bb080_58_peg<BR>
+bb080_60<BR>
+bb080_60_peg<BR>
+bb080_62<BR>
+bb080_62_peg<BR>
+bb080_64<BR>
+bb080_64_peg<BR>
+bb080_66<BR>
+bb080_66_peg<BR>
+bb080_68<BR>
+bb080_68_peg<BR>
+bb080_70<BR>
+bb080_70_peg<BR>
+bb080_72<BR>
+bb080_72_peg<BR>
+bb080_74<BR>
+bb080_74_peg<BR>
+bb080_76<BR>
+bb080_76_peg<BR>
+bb080_78<BR>
+bb080_78_peg<BR>
+bb080_80<BR>
+bb080_80_peg<BR>
+bb080_82<BR>
+bb080_82_peg<BR>
+bb080_84<BR>
+bb080_84_peg<BR>
+bb080_86<BR>
+bb080_86_peg<BR>
+bb080_88<BR>
+bb080_88_peg<BR>
+bb080_90<BR>
+bb080_90_peg<BR>
+bb080_92<BR>
+bb080_92_peg<BR>
+bb080_94<BR>
+bb080_94_peg<BR>
+bb080_96<BR>
+bb080_96_peg<BR>
+bb080_98<BR>
+bb080_98_peg<BR>
+bb080_100<BR>
+bb080_100_peg<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>SMD Transistors <FONT color=#ffaaaa>(17/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_smd_trans.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_smd_trans.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_smd_trans.jpg" align=center width=800><BR>
+<UL>
+D-PAK<BR>
+D-PAK-5<BR>
+D2-PAK<BR>
+D2-PAK-7<BR>
+PowerMite3<BR>
+PPAK<BR>
+SC70<BR>
+SC70-5<BR>
+SC70-6<BR>
+SOT323<BR>
+SOT323-5<BR>
+SOT323-6<BR>
+SOT23<BR>
+SOT23-5<BR>
+SOT23-6<BR>
+SOT23-8<BR>
+SOT143B<BR>
+SOT143R<BR>
+SOT89<BR>
+SOT223<BR>
+SOT404<BR>
+SOT428<BR>
+TO263<BR>
+TSOT-6<BR>
+</UL></TD></TR>
+</TABLE>
+<BR>
+<TABLE width=800px border=0  align="center">
+<TR><TD>Vacuum tubes <FONT color=#ffaaaa>(31/01/2015)</FONT> - <A href="/kicad_libs/modules/mod_vacuum.zip"><FONT color=#0ff3d5>Footprints</FONT></A><BR>
+<A href="/kicad_libs/packages3d/3d_vacuum.zip"><FONT color=#0ff3d5>3D Modules</FONT></A><BR>
+<IMG src="/elettronica/kicad/imgs/mod_vacuum.jpg" align=center width=800><BR>
+<UL>
+socket_gzc7-y (GZC7-Y 7-pin vacuum tube socket, without tube)<BR>
+socket_gzc9-b (GZC9-B 9-pin vacuum tube socket, without tube)<BR>
+tube_gzc7-y (GZC7-Y 7-pin vacuum tube socket, with tube)<BR>
+tube_gzc9-b (GZC9-B 9-pin vacuum tube socket, with tube)<BR>
+</UL></TD></TR>
+</TABLE>
+<HR align=center color=#ff6666 noShade SIZE=1 width="100%">
+</FONT>
+<FONT SIZE=2><P><FONT color="#009900"><center>Impaginazione by KCS'81</center></FONT>
+<CENTER><A href="http://www.easycounter.com/"><IMG src="http://www.easycounter.com/counter.php?kcswalter" border="0" alt="Free Web Counters"></A></CENTER>
+</BODY>
+</HTML>
